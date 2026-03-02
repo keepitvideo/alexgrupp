@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Bau (Light Theme) Variables & Styles
+   ========================================================================== */
+:root {
+    --color-bau-bg: #fdfdfd;
+    --color-bau-bg-alt: #f1f5f9;
+    --color-bau-text: #1e293b;
+    --color-bau-text-muted: #64748b;
+
+    --color-bau-primary: #f59e0b;
+    /* Warm Amber / Construct */
+    --color-bau-secondary: #0f172a;
+    /* Deep Slate */
+    --color-bau-accent: #10b981;
+    /* Fresh Emerald */
+
+    --gradient-bau: linear-gradient(135deg, #fdfdfd 0%, #e2e8f0 100%);
+    --shadow-bau: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.theme-bau {
+    background-color: var(--color-bau-bg);
+    color: var(--color-bau-text);
+}
+
+/* Split Screen Specifics */
+.split-side.split-bau {
+    background: var(--gradient-bau);
+    /* Optional: Background image for the Bau half */
+    background-image: linear-gradient(rgba(253, 253, 253, 0.8), rgba(253, 253, 253, 0.9)), url('../assets/bau-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.split-bau .content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.split-bau h1 {
+    font-size: 4rem;
+    font-weight: 300;
+    /* More elegant, less brutal */
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: var(--color-bau-secondary);
+}
+
+.split-bau p {
+    font-size: 1.2rem;
+    color: var(--color-bau-text-muted);
+    max-width: 80%;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.btn-bau {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--color-bau-primary);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    /* Softer, elegant edge */
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.btn-bau:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    background: #d97706;
+}

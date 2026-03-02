@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Global Variables & Resets
+   ========================================================================== */
+:root {
+  /* Typography */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Shared Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-glass-bg: rgba(255, 255, 255, 0.1);
+  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass-text: #ffffff;
+  
+  /* Transitions */
+  --transition-smooth: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: all 0.3s ease;
+  
+  /* Z-Index */
+  --z-header: 1000;
+  --z-overlay: 500;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: var(--color-black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==========================================================================
+   Global Components
+   ========================================================================== */
+
+/* Glassmorphism Header */
+.global-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  z-index: var(--z-header);
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-glass-border);
+  color: var(--color-glass-text);
+  /* The blend mode helps it look good on both dark and light sides if needed, 
+     though we will adjust text color dynamically or keep it white/contrasting */
+}
+
+/* Let's make the header text adapt slightly, but white is usually safe on glass */
+.global-header .logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.global-header .logo span {
+  font-weight: 300;
+}
+
+/* Header Controls (Switcher & Lang) */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Integrated Toggle Switch (Auto | Bau) */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  padding: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-switcher .slider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: var(--color-white);
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+  z-index: 1;
+}
+
+.theme-switcher.is-bau .slider {
+  transform: translateX(100%);
+  background: #333; /* Dark slider when on light theme */
+}
+
+.theme-switcher span {
+  position: relative;
+  z-index: 2;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+/* Active text colors inside the toggle */
+.theme-switcher:not(.is-bau) span.switch-auto {
+  color: var(--color-black);
+}
+.theme-switcher.is-bau span.switch-bau {
+  color: var(--color-white);
+}
+
+/* Language Dropdown */
+.lang-selector {
+  position: relative;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+
+.lang-selector:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .global-header {
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  .header-controls {
+    gap: 1rem;
+  }
+  
+  .theme-switcher span {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
