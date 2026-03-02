@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlexGroup | Auto & Bau</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+
     <!-- CSS Modules -->
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/auto.css">
@@ -18,15 +19,17 @@
         /* Specific Split Screen Layout Styles */
         body {
             margin: 0;
-            overflow: hidden; /* Prevent scrolling on the landing page *//
+            overflow: hidden;
+            /* Prevent scrolling on the landing page */
+            /
         }
-        
+
         .split-container {
             display: flex;
             width: 100vw;
             height: 100vh;
         }
-        
+
         .split-side {
             flex: 1;
             transition: var(--transition-smooth);
@@ -37,31 +40,39 @@
             justify-content: center;
         }
 
-        /* Hover Expansion Logic */
-        .split-side:hover {
-            flex: 1.5;
+        /* Hover Expansion Logic - Robust CSS implementation */
+        .split-container:hover .split-side {
+            flex: 1;
+            /* Default state when container hovered */
         }
-        
+
+        .split-container .split-side:hover {
+            flex: 1.5;
+            /* Expand the hovered side */
+        }
+
         /* Ensure content fades slightly when not focused */
-        .split-container:hover .split-side:not(:hover) .content-wrapper {
+        .split-container .split-side:not(:hover) .content-wrapper {
             opacity: 0.5;
         }
-        
+
         .content-wrapper {
             transition: opacity 0.4s ease;
         }
-        
+
         /* Mobile Layout */
         @media (max-width: 768px) {
             .split-container {
                 flex-direction: column;
             }
+
             .split-side:hover {
                 flex: 1.2;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Global Header -->
@@ -69,7 +80,7 @@
         <div class="logo">
             <a href="index.html">ALEX<span>GROUP</span></a>
         </div>
-        
+
         <div class="header-controls">
             <!-- Integrated Switcher - Just visual on split screen, functional on child pages -->
             <div class="theme-switcher" id="themeSwitcher" title="Switch Theme">
@@ -77,7 +88,7 @@
                 <span class="switch-auto">Auto</span>
                 <span class="switch-bau">Bau</span>
             </div>
-            
+
             <!-- Language Selector Placeholder -->
             <div class="lang-selector">
                 <span id="currentLang">🇩🇪 DE</span>
@@ -87,7 +98,7 @@
 
     <!-- Split Screen Main Content -->
     <main class="split-container">
-        
+
         <!-- Left Side: AUTO -->
         <section class="split-side split-auto" id="autoSide" onclick="location.href='auto/index.html';">
             <div class="content-wrapper">
@@ -96,7 +107,7 @@
                 <a href="auto/index.html" class="btn-auto" data-i18n="auto-btn">Zu Auto</a>
             </div>
         </section>
-        
+
         <!-- Right Side: BAU -->
         <section class="split-side split-bau" id="bauSide" onclick="location.href='bau/index.html';">
             <div class="content-wrapper">
@@ -110,4 +121,5 @@
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
