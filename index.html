@@ -4,70 +4,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlexGroup | Auto & Bau</title>
+    <title>AlexGroup — KFZ-Service & Innenausbau</title>
+    <meta name="description"
+        content="AlexGroup — Ihr zuverlässiger Partner für professionellen KFZ-Service und erstklassigen Innenausbau in Bayern.">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- CSS Modules -->
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/auto.css">
     <link rel="stylesheet" href="styles/bau.css">
+
     <style>
-        /* Specific Split Screen Layout Styles */
+        /* ===== SPLIT SCREEN LAYOUT ===== */
+        html,
         body {
-            margin: 0;
-            overflow: hidden;
-            /* Prevent scrolling on the landing page */
-            /
+            height: 100%;
+        }
+
+        body {
+            background: #0d0d0d;
         }
 
         .split-container {
             display: flex;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
         }
 
         .split-side {
             flex: 1;
-            transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Hover Expansion Logic - Robust CSS implementation */
+        /* Hover expansion */
         .split-container:hover .split-side {
-            flex: 1;
-            /* Default state when container hovered */
+            flex: 0.85;
         }
 
         .split-container .split-side:hover {
-            flex: 1.5;
-            /* Expand the hovered side */
+            flex: 1.15;
         }
 
-        /* Ensure content fades slightly when not focused */
-        .split-container .split-side:not(:hover) .content-wrapper {
-            opacity: 0.5;
+        .split-side .bg-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+            will-change: transform, filter;
         }
 
+        .split-side:hover .bg-image {
+            transform: scale(1.04);
+        }
+
+        .split-container:hover .split-side:not(:hover) .bg-image {
+            filter: brightness(0.45) saturate(0.7);
+        }
+
+        .split-side .overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* AUTO side */
+        .split-auto .bg-image {
+            background-image: url('assets/auto-bg.jpg');
+        }
+
+        .split-auto .overlay {
+            background: linear-gradient(120deg,
+                    rgba(0, 0, 0, 0.75) 0%,
+                    rgba(10, 10, 25, 0.55) 100%);
+        }
+
+        /* BAU side */
+        .split-bau .bg-image {
+            background-image: url('assets/bau-bg.jpg');
+        }
+
+        .split-bau .overlay {
+            background: linear-gradient(-120deg,
+                    rgba(255, 248, 235, 0.72) 0%,
+                    rgba(240, 235, 220, 0.55) 100%);
+        }
+
+        /* Content */
         .content-wrapper {
-            transition: opacity 0.4s ease;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.5s ease, opacity 0.4s ease;
         }
 
-        /* Mobile Layout */
+        .split-container:hover .split-side:not(:hover) .content-wrapper {
+            opacity: 0.3;
+            transform: scale(0.97);
+        }
+
+        .split-side:hover .content-wrapper {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* AUTO Text */
+        .split-auto .content-wrapper {
+            color: #fff;
+        }
+
+        .split-auto .side-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 1rem;
+        }
+
+        .split-auto h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .split-auto p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 380px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.65;
+        }
+
+        /* BAU Text */
+        .split-bau .content-wrapper {
+            color: #1e293b;
+        }
+
+        .split-bau .side-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.4);
+            margin-bottom: 1rem;
+        }
+
+        .split-bau h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 1.25rem;
+            color: #0f172a;
+        }
+
+        .split-bau p {
+            font-size: 1rem;
+            color: rgba(15, 23, 42, 0.6);
+            max-width: 380px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.65;
+        }
+
+        /* ===== AG DIVIDER ===== */
+        .ag-divider {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .ag-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .ag-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ag-line.top {
+            bottom: calc(100% + 8px);
+            height: 40vh;
+        }
+
+        .ag-line.bottom {
+            top: calc(100% + 8px);
+            height: 40vh;
+        }
+
+        /* ===== ARROW HINT ===== */
+        .enter-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .split-side:hover .enter-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .split-auto .enter-hint {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .split-bau .enter-hint {
+            color: rgba(15, 23, 42, 0.5);
+        }
+
+        .enter-hint svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== MOBILE ===== */
         @media (max-width: 768px) {
             .split-container {
                 flex-direction: column;
+                min-height: 100vh;
+                height: auto;
             }
 
-            .split-side:hover {
-                flex: 1.2;
+            .split-side {
+                flex: none !important;
+                min-height: 50vh;
+            }
+
+            .ag-divider {
+                display: none;
+            }
+
+            .split-auto h1,
+            .split-bau h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -82,44 +292,87 @@
         </div>
 
         <div class="header-controls">
-            <!-- Integrated Switcher - Just visual on split screen, functional on child pages -->
-            <div class="theme-switcher" id="themeSwitcher" title="Switch Theme">
+            <div class="theme-switcher" id="themeSwitcher">
                 <div class="slider"></div>
                 <span class="switch-auto">Auto</span>
                 <span class="switch-bau">Bau</span>
             </div>
-
-            <!-- Language Selector Placeholder -->
-            <div class="lang-selector">
-                <span id="currentLang">🇩🇪 DE</span>
-            </div>
         </div>
     </header>
 
-    <!-- Split Screen Main Content -->
+    <!-- Split Screen -->
     <main class="split-container">
 
-        <!-- Left Side: AUTO -->
-        <section class="split-side split-auto" id="autoSide" onclick="location.href='auto/index.html';">
+        <!-- AG Divider Badge -->
+        <div class="ag-divider">
+            <div class="ag-line top"></div>
+            <div class="ag-badge">AG</div>
+            <div class="ag-line bottom"></div>
+        </div>
+
+        <!-- Left: AUTO -->
+        <section class="split-side split-auto" id="autoSide" onclick="location.href='auto/index.html';" role="link"
+            aria-label="Zum KFZ-Service">
+            <div class="bg-image"></div>
+            <div class="overlay"></div>
             <div class="content-wrapper">
-                <h1 data-i18n="auto-title">KFZ Service</h1>
-                <p data-i18n="auto-desc">Professionelle Diagnose, Reparatur und Kaufberatung für Ihr Auto.</p>
-                <a href="auto/index.html" class="btn-auto" data-i18n="auto-btn">Zu Auto</a>
+                <p class="side-label">Richtung wählen</p>
+                <h1>KFZ-Service</h1>
+                <p>Professionelle Diagnose, Reparatur und Kaufberatung für Ihr Fahrzeug in Bayern.</p>
+                <a class="btn btn-primary-auto" onclick="event.stopPropagation(); location.href='auto/index.html';"
+                    data-i18n="btn-auto">
+                    Zu den Leistungen
+                </a>
+                <div class="enter-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                    Bereich betreten
+                </div>
             </div>
         </section>
 
-        <!-- Right Side: BAU -->
-        <section class="split-side split-bau" id="bauSide" onclick="location.href='bau/index.html';">
+        <!-- Right: BAU -->
+        <section class="split-side split-bau" id="bauSide" onclick="location.href='bau/index.html';" role="link"
+            aria-label="Zum Innenausbau">
+            <div class="bg-image"></div>
+            <div class="overlay"></div>
             <div class="content-wrapper">
-                <h1 data-i18n="bau-title">Innenausbau</h1>
-                <p data-i18n="bau-desc">Exklusive Fliesen, Renovierung und professionelle Umzugshilfe.</p>
-                <a href="bau/index.html" class="btn-bau" data-i18n="bau-btn">Zu Bau</a>
+                <p class="side-label">Richtung wählen</p>
+                <h1>Innenausbau</h1>
+                <p>Erstklassige Fliesenarbeiten, Renovierung und professionelle Umzugsbegleitung.</p>
+                <a class="btn btn-primary-bau" onclick="event.stopPropagation(); location.href='bau/index.html';"
+                    data-i18n="btn-bau">
+                    Zu den Leistungen
+                </a>
+                <div class="enter-hint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                    Bereich betreten
+                </div>
             </div>
         </section>
 
     </main>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Scroll-based header tint
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Switcher click navigates to section
+        const switcher = document.getElementById('themeSwitcher');
+        if (switcher) {
+            switcher.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isBau = switcher.classList.toggle('is-bau');
+                location.href = isBau ? 'bau/index.html' : 'auto/index.html';
+            });
+        }
+    </script>
+
 </body>
 
 </html>

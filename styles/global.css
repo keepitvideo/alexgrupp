@@ -1,31 +1,57 @@
 /* ==========================================================================
-   Global Variables & Resets
+   Global Design System — AlexGroup
+   Unified tokens, resets, header, and shared components
    ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
   /* Typography */
-  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-base: 16px;
+
+  /* ---- Unified Button System ---- */
+  --btn-radius: 6px;
+  --btn-padding: 0.9rem 2.2rem;
+  --btn-font-size: 0.95rem;
+  --btn-font-weight: 600;
+  --btn-letter-spacing: 0.06em;
+  --btn-transition: all 0.25s ease;
+
   /* Shared Colors */
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-glass-bg: rgba(255, 255, 255, 0.1);
-  --color-glass-border: rgba(255, 255, 255, 0.2);
+  --color-glass-bg: rgba(10, 10, 10, 0.55);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
   --color-glass-text: #ffffff;
-  
+
   /* Transitions */
-  --transition-smooth: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  --transition-fast: all 0.3s ease;
-  
+  --transition-smooth: all 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: all 0.25s ease;
+
   /* Z-Index */
   --z-header: 1000;
   --z-overlay: 500;
+
+  /* Spacing */
+  --section-padding: 100px 8%;
+  --section-padding-mobile: 60px 24px;
 }
 
-/* Reset */
-*, *::before, *::after {
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33,78 +59,111 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background-color: var(--color-black);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  transition: var(--transition-fast);
 }
 
 ul {
   list-style: none;
 }
 
-/* ==========================================================================
-   Global Components
-   ========================================================================== */
+img {
+  max-width: 100%;
+  display: block;
+}
 
-/* Glassmorphism Header */
+/* ==========================================================================
+   Glassmorphism Header
+   ========================================================================== */
 .global-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px;
+  height: 76px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
   z-index: var(--z-header);
   background: var(--color-glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--color-glass-border);
-  color: var(--color-glass-text);
-  /* The blend mode helps it look good on both dark and light sides if needed, 
-     though we will adjust text color dynamically or keep it white/contrasting */
+  transition: background 0.4s ease;
 }
 
-/* Let's make the header text adapt slightly, but white is usually safe on glass */
+.global-header.scrolled {
+  background: rgba(5, 5, 5, 0.92);
+}
+
 .global-header .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  text-transform: uppercase;
 }
 
 .global-header .logo span {
   font-weight: 300;
+  opacity: 0.85;
 }
 
 /* Header Controls (Switcher & Lang) */
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-/* Integrated Toggle Switch (Auto | Bau) */
+/* Sub Navigation Links (on internal pages) */
+.header-nav {
+  display: flex;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.header-nav a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.header-nav a:hover,
+.header-nav a.active {
+  color: var(--color-white);
+  border-bottom-color: currentColor;
+}
+
+/* ==========================================================================
+   Integrated Toggle Switch (Auto | Bau)
+   ========================================================================== */
 .theme-switcher {
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 30px;
-  padding: 4px;
+  padding: 3px;
   position: relative;
   cursor: pointer;
+  user-select: none;
 }
 
 .theme-switcher .slider {
   position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
   background: var(--color-white);
   border-radius: 20px;
   transition: var(--transition-smooth);
@@ -113,56 +172,236 @@ ul {
 
 .theme-switcher.is-bau .slider {
   transform: translateX(100%);
-  background: #333; /* Dark slider when on light theme */
+  background: #f0f0f0;
 }
 
 .theme-switcher span {
   position: relative;
   z-index: 2;
-  padding: 8px 20px;
-  font-size: 0.9rem;
+  padding: 7px 18px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-white);
+  color: rgba(255, 255, 255, 0.6);
   transition: color 0.3s ease;
-  user-select: none;
+  letter-spacing: 0.05em;
 }
 
-/* Active text colors inside the toggle */
-.theme-switcher:not(.is-bau) span.switch-auto {
-  color: var(--color-black);
-}
-.theme-switcher.is-bau span.switch-bau {
-  color: var(--color-white);
+.theme-switcher:not(.is-bau) .switch-auto {
+  color: #111;
 }
 
-/* Language Dropdown */
-.lang-selector {
-  position: relative;
+.theme-switcher.is-bau .switch-bau {
+  color: #111;
+}
+
+/* ==========================================================================
+   Unified Button System
+   ========================================================================== */
+
+/* Base button — both themes override color variables */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  letter-spacing: var(--btn-letter-spacing);
+  text-transform: uppercase;
   cursor: pointer;
-  font-weight: 500;
+  transition: var(--btn-transition);
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+/* Primary — filled */
+.btn-primary-auto {
+  background: transparent;
+  color: #fff;
+  border-color: #e63946;
+}
+
+.btn-primary-auto:hover {
+  background: #e63946;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+}
+
+.btn-primary-bau {
+  background: #f59e0b;
+  color: #fff;
+  border-color: #f59e0b;
+}
+
+.btn-primary-bau:hover {
+  background: #d97706;
+  border-color: #d97706;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Secondary — outline */
+.btn-secondary-auto {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-secondary-auto:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-secondary-bau {
+  background: transparent;
+  color: #0f172a;
+  border-color: #0f172a;
+}
+
+.btn-secondary-bau:hover {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Shared Sections
+   ========================================================================== */
+
+.section {
+  padding: var(--section-padding);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  opacity: 0.6;
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+/* Counter Strip */
+.counter-strip {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.counter-item .count {
+  font-size: 3rem;
+  font-weight: 800;
+  display: block;
+}
+
+.counter-item .label {
   font-size: 0.9rem;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: var(--transition-fast);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: 0.25rem;
+  display: block;
 }
 
-.lang-selector:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Responsive adjustments */
+/* Two-column layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.site-footer {
+  padding: 40px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .counter-strip {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .global-header {
-    height: 70px;
+    height: 66px;
     padding: 0 20px;
   }
-  
+
+  .header-nav {
+    display: none;
+  }
+
   .header-controls {
     gap: 1rem;
   }
-  
+
   .theme-switcher span {
     padding: 6px 12px;
     font-size: 0.8rem;
+  }
+
+  .section {
+    padding: var(--section-padding-mobile);
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .counter-strip {
+    gap: 2rem;
+    padding: 40px 20px;
+  }
+
+  .counter-item .count {
+    font-size: 2.2rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
   }
 }

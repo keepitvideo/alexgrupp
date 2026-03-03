@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innenausbau | AlexGroup</title>
+    <meta name="description"
+        content="Erstklassiger Innenausbau, Fliesenarbeiten und Umzugsservice in Bayern. AlexGroup.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous">
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/bau.css">
+
+    <style>
+        /* ===== BAU INTERNAL — Base ===== */
+        body {
+            background: #fafafa;
+            color: #1e293b;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 250, 240, 0.6), rgba(250, 245, 235, 0.7)),
+                url('../assets/bau_hero.png');
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.05);
+            transition: transform 8s ease;
+            will-change: transform;
+        }
+
+        .hero.loaded .hero-bg {
+            transform: scale(1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 720px;
+            padding: 0 24px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #f59e0b;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.08;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+
+        .hero-content h1 strong {
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: rgba(15, 23, 42, 0.55);
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== COUNTER STRIP ===== */
+        .counter-strip {
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .counter-strip .count {
+            color: #0f172a;
+        }
+
+        .counter-strip .label {
+            color: #94a3b8;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-section {
+            background: #fafafa;
+        }
+
+        .services-section .section-title {
+            color: #0f172a;
+        }
+
+        .services-section .section-subtitle {
+            color: #64748b;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-top: 3px solid #f59e0b;
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(245, 158, 11, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #f59e0b;
+            font-size: 1.25rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            font-size: 0.925rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-section {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .about-section .section-title {
+            color: #0f172a;
+        }
+
+        .about-text p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 0.975rem;
+        }
+
+        .about-image-wrapper {
+            border-radius: 14px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: #fafafa;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .contact-section .section-title {
+            color: #0f172a;
+        }
+
+        .contact-section .section-subtitle {
+            color: #64748b;
+        }
+
+        .contact-cards {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            flex: 1;
+            min-width: 200px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .contact-card h4 {
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-card a {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+        }
+
+        .site-footer .footer-links a {
+            color: #94a3b8;
+        }
+
+        .site-footer .footer-links a:hover {
+            color: #0f172a;
+        }
+
+        @media (max-width: 768px) {
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="global-header" id="mainHeader">
+        <div class="logo">
+            <a href="../index.html">ALEX<span>GROUP</span></a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#ueber-uns">Über uns</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+
+        <div class="header-controls">
+            <div class="theme-switcher is-bau" id="themeSwitcher" title="Zu KFZ-Service wechseln"
+                onclick="location.href='../auto/index.html';">
+                <div class="slider"></div>
+                <span class="switch-auto">Auto</span>
+                <span class="switch-bau">Bau</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">AlexGroup · Bayern</p>
+            <h1><strong>Innenausbau</strong><br>mit Leidenschaft</h1>
+            <p>Erstklassige Fliesenarbeiten, professionelle Renovierungen und zuverlässiger Umzugsservice — aus einer
+                Hand.</p>
+            <div class="hero-ctas">
+                <a href="#kontakt" class="btn btn-primary-bau">Angebot anfragen</a>
+                <a href="#leistungen" class="btn btn-secondary-bau">Unsere Leistungen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Strip -->
+    <div class="counter-strip">
+        <div class="counter-strip" style="background:transparent; border:none;">
+            <div class="counter-item" data-aos="fade-up" data-aos-delay="0">
+                <span class="count">10+</span>
+                <span class="label">Jahre Erfahrung</span>
+            </div>
+            <div class="counter-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="count">300+</span>
+                <span class="label">Abgeschlossene Projekte</span>
+            </div>
+            <div class="counter-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="count">5★</span>
+                <span class="label">Kundenbewertung</span>
+            </div>
+            <div class="counter-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="count">100%</span>
+                <span class="label">Qualitätsgarantie</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="section services-section" id="leistungen">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div data-aos="fade-up">
+                <p
+                    style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:#f59e0b; margin-bottom:0.75rem;">
+                    Was wir anbieten</p>
+                <h2 class="section-title">Unsere Leistungen</h2>
+                <p class="section-subtitle">Von der Einzelfliese bis zur kompletten Raumgestaltung — wir setzen Ihre
+                    Vorstellungen mit handwerklicher Präzision um.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="icon"><i class="fas fa-th-large"></i></div>
+                    <h3>Fliesenarbeiten</h3>
+                    <p>Verlegung exklusiver Fliesen jeder Größe und jedes Formats. Präzise Ausführung, saubere Fugen,
+                        dauerhaftes Ergebnis.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon"><i class="fas fa-paint-roller"></i></div>
+                    <h3>Renovierung & Ausbau</h3>
+                    <p>Komplette Innenrenovierungen nach Ihren Wünschen — von Böden und Wänden bis zur Decke,
+                        schlüsselfertig.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon"><i class="fas fa-truck-ramp-box"></i></div>
+                    <h3>Umzugsservice</h3>
+                    <p>Professioneller Umzug mit sorgfältiger Verpackung, sicherem Transport und pünktlicher Lieferung.
+                    </p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon"><i class="fas fa-couch"></i></div>
+                    <h3>Möbelmontage</h3>
+                    <p>Fachgerechte Montage von Möbeln jeder Komplexität — schnell, ordentlich, mit Ergebnis-Garantie.
+                    </p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h3>Maßanfertigungen</h3>
+                    <p>Individuelle Lösungen auf Maß: Einbauregale, Nischen, Trennwände und andere Sonderkonstruktionen.
+                    </p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>Projektbegleitung</h3>
+                    <p>Wir koordinieren und begleiten Ihr Bauprojekt von der Planung bis zur Übergabe — zuverlässig und
+                        transparent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about-section" id="ueber-uns">
+        <div class="two-col" style="max-width:1200px; margin:0 auto;">
+            <div class="about-image-wrapper" data-aos="fade-right">
+                <img src="../assets/bau_hero.png" alt="AlexGroup Innenausbau">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <p
+                    style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:#f59e0b; margin-bottom:0.75rem;">
+                    Wer wir sind</p>
+                <h2 class="section-title">Qualität, die man<br>spürt und sieht</h2>
+                <p>Wir sind ein eingespieltes Team erfahrener Handwerker mit einer Leidenschaft für Details und
+                    Perfektion. Unser Anspruch: jedes Projekt so zu behandeln, als ob es Ihr eigenes Zuhause wäre.</p>
+                <p>Ob Badezimmer-Renovierung, Wohnzimmer-Neugestaltung oder kompletter Umzug — wir stehen für Qualität,
+                    Pünktlichkeit und einen sauberen Arbeitsplatz.</p>
+                <a href="#kontakt" class="btn btn-primary-bau" style="margin-top:1.5rem; display:inline-flex;">Kontakt
+                    aufnehmen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact-section" id="kontakt">
+        <div style="text-align:center; max-width:700px; margin:0 auto;">
+            <div data-aos="fade-up">
+                <p
+                    style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:#f59e0b; margin-bottom:0.75rem;">
+                    Jetzt anfragen</p>
+                <h2 class="section-title">So erreichen Sie uns</h2>
+                <p class="section-subtitle">Ob Kostenvoranschlag, Projektrückfrage oder schnelle Hilfe — wir antworten
+                    persönlich und schnell.</p>
+            </div>
+            <div class="contact-cards" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h4>Telefon</h4>
+                    <a href="tel:+49123456789">+49 (0) 123 456 789</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/49123456789">Nachricht senden</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h4>E-Mail</h4>
+                    <a href="mailto:bau@alexgroup.d">bau@alexgroup.d</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 AlexGroup · Alle Rechte vorbehalten</p>
+        <div class="footer-links">
+            <a href="../index.html">Startseite</a>
+            <a href="../legal/impressum.html">Impressum</a>
+            <a href="../legal/datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
+    <!-- AOS Init -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 60
+        });
+
+        // Header scroll tint
+        window.addEventListener('scroll', () => {
+            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Hero zoom in
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => document.getElementById('hero').classList.add('loaded'), 100);
+        });
+    </script>
+
+</body>
+
+</html>

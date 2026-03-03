@@ -85,3 +85,119 @@
     box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
     background: #d97706;
 }
+
+/* Internal Page Styles */
+.internal-page-bau {
+    background-color: var(--color-bau-bg);
+}
+
+/* Hero Section */
+.hero-section-bau {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6)), url('../assets/bau_hero.png');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-bau-text);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--color-bau-secondary);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--color-bau-text-muted);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Section Common */
+.section-bau {
+    padding: 100px 5%;
+}
+
+.section-title-bau {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-bau-secondary);
+}
+
+/* Services Grid */
+.services-grid-bau {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card-bau {
+    background: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-bau);
+    transition: var(--transition-smooth);
+    border: 1px solid transparent;
+}
+
+.service-card-bau:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-bau-primary);
+}
+
+.service-card-bau i {
+    font-size: 2.5rem;
+    color: var(--color-bau-primary);
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.service-card-bau h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-bau-secondary);
+}
+
+.service-card-bau p {
+    color: var(--color-bau-text-muted);
+    line-height: 1.6;
+}
+
+/* Footer Section */
+.footer-simple-bau {
+    padding: 50px 5%;
+    background: var(--color-bau-bg-alt);
+    color: var(--color-bau-text-muted);
+    text-align: center;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-nav a:hover {
+    color: var(--color-bau-primary);
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-bau {
+        padding: 60px 20px;
+    }
+}
