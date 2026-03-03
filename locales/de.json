@@ -1,0 +1,45 @@
+{
+  "nav-start": "Startseite",
+  "nav-services": "Leistungen",
+  "nav-about": "Über uns",
+  "nav-contact": "Kontakt",
+  "nav-gallery": "Galerie",
+
+  "home-auto-label": "Richtung wählen",
+  "home-auto-title": "KFZ-Service",
+  "home-auto-desc": "Professionelle Diagnose, Reparatur und Kaufberatung für Ihr Fahrzeug in Bayern.",
+  "home-auto-cta": "Zu den Leistungen",
+  "home-bau-label": "Richtung wählen",
+  "home-bau-title": "Innenausbau",
+  "home-bau-desc": "Erstklassige Fliesenarbeiten, Renovierung und professionelle Umzugsbegleitung.",
+  "home-bau-cta": "Zu den Leistungen",
+  "home-enter-hint": "Bereich betreten",
+
+  "auto-hero-eyebrow": "AlexGrupp · Bayern",
+  "auto-hero-title": "KFZ-Service auf höchstem Niveau",
+  "auto-hero-desc": "Professionelle Fahrzeugdiagnose, zuverlässige Reparaturen und kompetente Kaufberatung — aus einer Hand.",
+  "auto-hero-cta-primary": "Termin anfragen",
+  "auto-hero-cta-secondary": "Alle Leistungen",
+
+  "auto-services-eyebrow": "Was wir anbieten",
+  "auto-services-title": "Unsere Leistungen",
+  "auto-services-desc": "Von der Erstdiagnose bis zur vollständigen Fahrzeuginstandsetzung.",
+
+  "auto-about-eyebrow": "Wer wir sind",
+  "auto-about-title": "Handwerk, das man vertrauen kann",
+  "auto-about-cta": "Mehr über uns",
+
+  "auto-contact-eyebrow": "Jetzt anfragen",
+  "auto-contact-title": "So erreichen Sie uns",
+  "auto-contact-desc": "Ob telefonisch, per WhatsApp oder E-Mail — wir antworten schnell.",
+
+  "bau-hero-eyebrow": "AlexGrupp · Bayern",
+  "bau-hero-title": "Innenausbau mit Leidenschaft",
+  "bau-hero-desc": "Erstklassige Fliesenarbeiten, professionelle Renovierungen und zuverlässiger Umzugsservice — aus einer Hand.",
+  "bau-hero-cta-primary": "Angebot anfragen",
+  "bau-hero-cta-secondary": "Alle Leistungen",
+
+  "footer-copy": "Alle Rechte vorbehalten",
+  "footer-impressum": "Impressum",
+  "footer-datenschutz": "Datenschutz"
+}

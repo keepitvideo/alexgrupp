@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über uns | AlexGrupp Innenausbau</title>
+    <meta name="description"
+        content="Lernen Sie das AlexGrupp Bau-Team kennen — erfahrene Handwerker mit Leidenschaft für Details.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/bau.css">
+    <style>
+        body {
+            background: #fafafa;
+            color: #1e293b;
+        }
+
+        .page-hero {
+            padding: 160px 8% 80px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .breadcrumb {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: #f59e0b;
+        }
+
+        .breadcrumb span {
+            margin: 0 0.5rem;
+        }
+
+        .eyebrow {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1rem;
+            color: #64748b;
+            max-width: 580px;
+            line-height: 1.75;
+        }
+
+        .about-intro {
+            padding: 100px 8%;
+            background: #fafafa;
+        }
+
+        .about-intro-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-intro img {
+            width: 100%;
+            border-radius: 14px;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text p {
+            font-size: 0.975rem;
+            color: #64748b;
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+        }
+
+        .values-section {
+            padding: 80px 8%;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .section-head {
+            text-align: center;
+        }
+
+        .section-head h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-head p {
+            font-size: 0.95rem;
+            color: #64748b;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .value-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem 1.75rem;
+        }
+
+        .value-card i {
+            font-size: 1.5rem;
+            color: #f59e0b;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .value-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            font-size: 0.875rem;
+            color: #64748b;
+            line-height: 1.65;
+        }
+
+        .timeline-section {
+            padding: 100px 8%;
+            background: #fafafa;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .timeline {
+            max-width: 700px;
+            margin: 3.5rem auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f59e0b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.875rem;
+            color: #64748b;
+            line-height: 1.65;
+        }
+
+        .site-footer {
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+        }
+
+        .site-footer .footer-links a {
+            color: #94a3b8;
+        }
+
+        .site-footer .footer-links a:hover {
+            color: #0f172a;
+        }
+
+        @media (max-width: 900px) {
+            .about-intro-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="global-header scrolled" id="mainHeader">
+        <div class="logo"><a href="../index.html">ALEX<span>GRUPP</span></a></div>
+        <nav class="header-nav">
+            <a href="index.html" data-i18n="nav-start">Startseite</a>
+            <a href="leistungen.html" data-i18n="nav-services">Leistungen</a>
+            <a href="uber-uns.html" class="active" data-i18n="nav-about">Über uns</a>
+            <a href="kontakt.html" data-i18n="nav-contact">Kontakt</a>
+        </nav>
+        <div class="header-controls">
+            <div class="theme-switcher is-bau" onclick="location.href='../auto/uber-uns.html';">
+                <div class="slider"></div>
+                <span class="switch-auto">Auto</span>
+                <span class="switch-bau">Bau</span>
+            </div>
+            <div id="langSwitcher"></div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="breadcrumb"><a href="index.html">Startseite</a><span>›</span>Über uns</div>
+        <span class="eyebrow">Wer wir sind</span>
+        <h1>Qualität, die man<br>sieht und fühlt</h1>
+        <p>Erfahren Sie mehr über das Team und die Werte, die AlexGrupp Bau ausmachen.</p>
+    </section>
+
+    <section class="about-intro">
+        <div class="about-intro-inner">
+            <div class="about-text" data-aos="fade-right">
+                <span class="eyebrow">Unsere Geschichte</span>
+                <h2>Handwerk mit Herz und Präzision</h2>
+                <p>AlexGrupp Bau entstand aus der Überzeugung, dass gute Handwerksarbeit mehr ist als nur Funktionalität
+                    — sie soll schön sein, lange halten und Freude bereiten.</p>
+                <p>Unser Team aus erfahrenen Fliesenlegern, Renovierungsspezialisten und Umzugshelfern arbeitet nach
+                    einem klaren Grundsatz: Wir behandeln jede Wohnung, als wäre es unsere eigene.</p>
+                <p>Von kleinen Reparaturen bis zu kompletten Kernsanierungen — die Qualität bleibt immer gleich.</p>
+                <a href="kontakt.html" class="btn btn-primary-bau"
+                    style="margin-top:1.5rem; display:inline-flex;">Kontakt aufnehmen</a>
+            </div>
+            <div data-aos="fade-left">
+                <img src="../assets/bau_hero.png" alt="AlexGrupp Innenausbau Team">
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow">Was uns antreibt</span>
+            <h2>Unsere Werte</h2>
+            <p>Grundsätze, nach denen wir jeden Tag arbeiten.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card" data-aos="fade-up" data-aos-delay="0">
+                <i class="fas fa-gem"></i>
+                <h4>Perfektion im Detail</h4>
+                <p>Wir legen Wert auf jede Fliese, jede Fuge, jede gerade Linie — auch wenn es niemand direkt sieht.</p>
+            </div>
+            <div class="value-card" data-aos="fade-up" data-aos-delay="80">
+                <i class="fas fa-comments"></i>
+                <h4>Offene Kommunikation</h4>
+                <p>Wir informieren Sie über den Fortschritt und sprechen Änderungen immer vorab ab.</p>
+            </div>
+            <div class="value-card" data-aos="fade-up" data-aos-delay="160">
+                <i class="fas fa-leaf"></i>
+                <h4>Sauberkeit & Ordnung</h4>
+                <p>Ihre Wohnung bleibt so sauber wie möglich. Schutzmaßnahmen sind für uns selbstverständlich.</p>
+            </div>
+            <div class="value-card" data-aos="fade-up" data-aos-delay="240">
+                <i class="fas fa-shield-halved"></i>
+                <h4>Verlässlichkeit</h4>
+                <p>Wir kommen, wenn wir sagen, dass wir kommen. Und wir liefern, was wir versprechen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow">Meilensteine</span>
+            <h2>Unsere Entwicklung</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                    <h4>Beginn als Fliesenlegebetrieb</h4>
+                    <p>Gestartet mit Badsanierungen für Privatkunden in und um München.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="80">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                    <h4>Erweiterung auf Vollrenovierungen</h4>
+                    <p>Auf Kundenwunsch übernahmen wir komplette Wohnungsrenovierungen — schlüsselfertig.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="160">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                    <h4>Umzugsservice & Möbelmontage</h4>
+                    <p>Logische Erweiterung durch Umzugsservice — für unsere Kunden aus einer Hand.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="240">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                    <h4>AlexGrupp — eine Marke, zwei Welten</h4>
+                    <p>Zusammenschluss mit KFZ-Service unter dem Dach von AlexGrupp — für umfassenden Service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer section" style="padding:40px 8%;">
+        <p>&copy; 2026 AlexGrupp · Alle Rechte vorbehalten</p>
+        <div class="footer-links">
+            <a href="../index.html">Hauptseite</a>
+            <a href="../legal/impressum.html">Impressum</a>
+            <a href="../legal/datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
+        window.addEventListener('scroll', () => { document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 30); });
+    </script>
+</body>
+
+</html>

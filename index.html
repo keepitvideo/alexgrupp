@@ -4,19 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AlexGroup — KFZ-Service & Innenausbau</title>
+    <title>AlexGrupp — KFZ-Service & Innenausbau</title>
     <meta name="description"
-        content="AlexGroup — Ihr zuverlässiger Partner für professionellen KFZ-Service und erstklassigen Innenausbau in Bayern.">
+        content="AlexGrupp — Ihr zuverlässiger Partner für professionellen KFZ-Service und erstklassigen Innenausbau in Bayern.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/auto.css">
     <link rel="stylesheet" href="styles/bau.css">
 
     <style>
-        /* ===== SPLIT SCREEN LAYOUT ===== */
         html,
         body {
             height: 100%;
@@ -24,8 +22,10 @@
 
         body {
             background: #0d0d0d;
+            overflow: hidden;
         }
 
+        /* Split container */
         .split-container {
             display: flex;
             width: 100%;
@@ -43,15 +43,15 @@
             transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Hover expansion */
         .split-container:hover .split-side {
-            flex: 0.85;
+            flex: 0.82;
         }
 
         .split-container .split-side:hover {
-            flex: 1.15;
+            flex: 1.18;
         }
 
+        /* BG image layers */
         .split-side .bg-image {
             position: absolute;
             inset: 0;
@@ -62,11 +62,11 @@
         }
 
         .split-side:hover .bg-image {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .split-container:hover .split-side:not(:hover) .bg-image {
-            filter: brightness(0.45) saturate(0.7);
+            filter: brightness(0.4) saturate(0.5);
         }
 
         .split-side .overlay {
@@ -75,29 +75,25 @@
             pointer-events: none;
         }
 
-        /* AUTO side */
+        /* AUTO */
         .split-auto .bg-image {
             background-image: url('assets/auto-bg.jpg');
         }
 
         .split-auto .overlay {
-            background: linear-gradient(120deg,
-                    rgba(0, 0, 0, 0.75) 0%,
-                    rgba(10, 10, 25, 0.55) 100%);
+            background: linear-gradient(120deg, rgba(0, 0, 0, 0.75) 0%, rgba(10, 10, 25, 0.5) 100%);
         }
 
-        /* BAU side */
+        /* BAU */
         .split-bau .bg-image {
             background-image: url('assets/bau-bg.jpg');
         }
 
         .split-bau .overlay {
-            background: linear-gradient(-120deg,
-                    rgba(255, 248, 235, 0.72) 0%,
-                    rgba(240, 235, 220, 0.55) 100%);
+            background: linear-gradient(-120deg, rgba(255, 248, 235, 0.68) 0%, rgba(240, 235, 220, 0.5) 100%);
         }
 
-        /* Content */
+        /* Content wrappers */
         .content-wrapper {
             position: relative;
             z-index: 10;
@@ -107,65 +103,60 @@
         }
 
         .split-container:hover .split-side:not(:hover) .content-wrapper {
-            opacity: 0.3;
-            transform: scale(0.97);
+            opacity: 0.25;
+            transform: scale(0.96);
         }
 
-        .split-side:hover .content-wrapper {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* AUTO Text */
+        /* AUTO text */
         .split-auto .content-wrapper {
             color: #fff;
         }
 
         .split-auto .side-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(255, 255, 255, 0.38);
             margin-bottom: 1rem;
         }
 
         .split-auto h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.4rem, 4.5vw, 4.2rem);
             font-weight: 800;
             letter-spacing: -0.02em;
             line-height: 1;
             margin-bottom: 1.25rem;
-            background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+            background: linear-gradient(135deg, #fff 30%, #93c5fd 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .split-auto p {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.65);
-            max-width: 380px;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 360px;
             margin: 0 auto 2.5rem;
             line-height: 1.65;
         }
 
-        /* BAU Text */
+        /* BAU text */
         .split-bau .content-wrapper {
             color: #1e293b;
         }
 
         .split-bau .side-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: rgba(15, 23, 42, 0.4);
+            color: rgba(15, 23, 42, 0.35);
             margin-bottom: 1rem;
         }
 
         .split-bau h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.4rem, 4.5vw, 4.2rem);
             font-weight: 300;
             letter-spacing: -0.02em;
             line-height: 1;
@@ -174,68 +165,61 @@
         }
 
         .split-bau p {
-            font-size: 1rem;
-            color: rgba(15, 23, 42, 0.6);
-            max-width: 380px;
+            font-size: 0.95rem;
+            color: rgba(15, 23, 42, 0.55);
+            max-width: 360px;
             margin: 0 auto 2.5rem;
             line-height: 1.65;
         }
 
-        /* ===== AG DIVIDER ===== */
+        /* ===== AG DIVIDER — fixed to viewport center ===== */
         .ag-divider {
-            position: absolute;
-            top: 50%;
+            position: fixed;
             left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 100;
+            top: 0;
+            bottom: 0;
+            transform: translateX(-50%);
+            z-index: 50;
             pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ag-line {
+            flex: 1;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15) 20%, rgba(255, 255, 255, 0.15) 80%, transparent);
         }
 
         .ag-badge {
-            width: 64px;
-            height: 64px;
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(12, 12, 12, 0.75);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: #fff;
             letter-spacing: 1px;
         }
 
-        .ag-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .ag-line.top {
-            bottom: calc(100% + 8px);
-            height: 40vh;
-        }
-
-        .ag-line.bottom {
-            top: calc(100% + 8px);
-            height: 40vh;
-        }
-
-        /* ===== ARROW HINT ===== */
+        /* ===== Arrow enter hint ===== */
         .enter-hint {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             opacity: 0;
-            transform: translateY(6px);
+            transform: translateY(4px);
             transition: opacity 0.3s ease, transform 0.3s ease;
             margin-top: 0.5rem;
         }
@@ -246,20 +230,24 @@
         }
 
         .split-auto .enter-hint {
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.45);
         }
 
         .split-bau .enter-hint {
-            color: rgba(15, 23, 42, 0.5);
+            color: rgba(15, 23, 42, 0.45);
         }
 
         .enter-hint svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
         }
 
         /* ===== MOBILE ===== */
         @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+
             .split-container {
                 flex-direction: column;
                 min-height: 100vh;
@@ -277,7 +265,7 @@
 
             .split-auto h1,
             .split-bau h1 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
         }
     </style>
@@ -285,30 +273,30 @@
 
 <body>
 
-    <!-- Global Header -->
-    <header class="global-header" id="mainHeader">
-        <div class="logo">
-            <a href="index.html">ALEX<span>GROUP</span></a>
-        </div>
+    <!-- Fixed AG center divider — stays at 50% regardless of hover -->
+    <div class="ag-divider" aria-hidden="true">
+        <div class="ag-line"></div>
+        <div class="ag-badge">AG</div>
+        <div class="ag-line"></div>
+    </div>
 
+    <!-- Header — auto-hides on splash, reveals on mouse approach -->
+    <header class="global-header splash-header" id="mainHeader">
+        <div class="logo">
+            <a href="index.html">ALEX<span>GRUPP</span></a>
+        </div>
         <div class="header-controls">
             <div class="theme-switcher" id="themeSwitcher">
                 <div class="slider"></div>
-                <span class="switch-auto">Auto</span>
-                <span class="switch-bau">Bau</span>
+                <span class="switch-auto" data-i18n="nav-auto">Auto</span>
+                <span class="switch-bau" data-i18n="nav-bau">Bau</span>
             </div>
+            <div id="langSwitcher"></div>
         </div>
     </header>
 
     <!-- Split Screen -->
     <main class="split-container">
-
-        <!-- AG Divider Badge -->
-        <div class="ag-divider">
-            <div class="ag-line top"></div>
-            <div class="ag-badge">AG</div>
-            <div class="ag-line bottom"></div>
-        </div>
 
         <!-- Left: AUTO -->
         <section class="split-side split-auto" id="autoSide" onclick="location.href='auto/index.html';" role="link"
@@ -316,18 +304,17 @@
             <div class="bg-image"></div>
             <div class="overlay"></div>
             <div class="content-wrapper">
-                <p class="side-label">Richtung wählen</p>
-                <h1>KFZ-Service</h1>
-                <p>Professionelle Diagnose, Reparatur und Kaufberatung für Ihr Fahrzeug in Bayern.</p>
+                <p class="side-label" data-i18n="home-auto-label">Richtung wählen</p>
+                <h1 data-i18n="home-auto-title">KFZ-Service</h1>
+                <p data-i18n="home-auto-desc">Professionelle Diagnose, Reparatur und Kaufberatung für Ihr Fahrzeug in
+                    Bayern.</p>
                 <a class="btn btn-primary-auto" onclick="event.stopPropagation(); location.href='auto/index.html';"
-                    data-i18n="btn-auto">
-                    Zu den Leistungen
-                </a>
+                    data-i18n="home-auto-cta">Zu den Leistungen</a>
                 <div class="enter-hint">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                    Bereich betreten
+                    <span data-i18n="home-enter-hint">Bereich betreten</span>
                 </div>
             </div>
         </section>
@@ -338,31 +325,47 @@
             <div class="bg-image"></div>
             <div class="overlay"></div>
             <div class="content-wrapper">
-                <p class="side-label">Richtung wählen</p>
-                <h1>Innenausbau</h1>
-                <p>Erstklassige Fliesenarbeiten, Renovierung und professionelle Umzugsbegleitung.</p>
+                <p class="side-label" data-i18n="home-bau-label">Richtung wählen</p>
+                <h1 data-i18n="home-bau-title">Innenausbau</h1>
+                <p data-i18n="home-bau-desc">Erstklassige Fliesenarbeiten, Renovierung und professionelle
+                    Umzugsbegleitung.</p>
                 <a class="btn btn-primary-bau" onclick="event.stopPropagation(); location.href='bau/index.html';"
-                    data-i18n="btn-bau">
-                    Zu den Leistungen
-                </a>
+                    data-i18n="home-bau-cta">Zu den Leistungen</a>
                 <div class="enter-hint">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                    Bereich betreten
+                    <span data-i18n="home-enter-hint">Bereich betreten</span>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <script src="js/i18n.js"></script>
     <script>
-        // Scroll-based header tint
-        window.addEventListener('scroll', () => {
-            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 20);
+        // ─── Auto-hide header: reveal when mouse within 90px of top ───
+        const header = document.getElementById('mainHeader');
+        let hideTimer = null;
+
+        document.addEventListener('mousemove', (e) => {
+            if (e.clientY < 90) {
+                clearTimeout(hideTimer);
+                header.classList.add('visible');
+            } else {
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(() => header.classList.remove('visible'), 1800);
+            }
         });
 
-        // Switcher click navigates to section
+        // Reveal on touch (mobile tap anywhere)
+        document.addEventListener('touchstart', () => {
+            header.classList.add('visible');
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(() => header.classList.remove('visible'), 3000);
+        }, { passive: true });
+
+        // ─── Theme switcher ───
         const switcher = document.getElementById('themeSwitcher');
         if (switcher) {
             switcher.addEventListener('click', (e) => {
@@ -372,7 +375,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>
