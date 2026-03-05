@@ -343,28 +343,8 @@
     </main>
 
     <script src="js/i18n.js"></script>
+    <script src="js/components/smart-header.js"></script>
     <script>
-        // ─── Auto-hide header: reveal when mouse within 90px of top ───
-        const header = document.getElementById('mainHeader');
-        let hideTimer = null;
-
-        document.addEventListener('mousemove', (e) => {
-            if (e.clientY < 90) {
-                clearTimeout(hideTimer);
-                header.classList.add('visible');
-            } else {
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(() => header.classList.remove('visible'), 1800);
-            }
-        });
-
-        // Reveal on touch (mobile tap anywhere)
-        document.addEventListener('touchstart', () => {
-            header.classList.add('visible');
-            clearTimeout(hideTimer);
-            hideTimer = setTimeout(() => header.classList.remove('visible'), 3000);
-        }, { passive: true });
-
         // ─── Theme switcher ───
         const switcher = document.getElementById('themeSwitcher');
         if (switcher) {

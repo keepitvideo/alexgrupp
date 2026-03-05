@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/bau.css">
+    <link rel="icon" href="../assets/Photopea Logo Black.png" type="image/png">
 
     <style>
         body {
@@ -322,7 +323,8 @@
         /* CTA BAND */
         .cta-band {
             padding: 80px 8%;
-            background: #f59e0b;
+            background: white;
+            border-top: 4px solid #d97706;
             text-align: center;
         }
 
@@ -334,13 +336,13 @@
         }
 
         .cta-band p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(217, 119, 6, 0.85);
             margin-bottom: 2.5rem;
         }
 
         .cta-band .btn {
             background: #fff;
-            color: #d97706;
+
             border-color: #fff;
             font-weight: 700;
         }
@@ -384,7 +386,8 @@
     <!-- Header -->
     <header class="global-header scrolled" id="mainHeader">
         <div class="logo">
-            <a href="../index.html">ALEX<span>GRUPP</span></a>
+            <a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
+                    class="logo-icon logo-icon-bau">ALEX<span>GRUPP</span></a>
         </div>
         <nav class="header-nav">
             <a href="index.html" class="active" data-i18n="nav-start">Startseite</a>
@@ -393,10 +396,9 @@
             <a href="kontakt.html" data-i18n="nav-contact">Kontakt</a>
         </nav>
         <div class="header-controls">
-            <div class="theme-switcher is-bau" onclick="location.href='../auto/index.html';">
-                <div class="slider"></div>
-                <span class="switch-auto">Auto</span>
-                <span class="switch-bau">Bau</span>
+            <div class="theme-switcher is-bau" id="themeSwitcher">
+                <button class="switch-btn" onclick="location.href='../auto/index.html'">Auto</button>
+                <button class="switch-btn active">Bau</button>
             </div>
             <div id="langSwitcher"></div>
         </div>
@@ -509,23 +511,8 @@
             <span class="eyebrow">Kundenstimmen</span>
             <h2>Was unsere Kunden sagen</h2>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
-                <div class="stars">★★★★★</div>
-                <blockquote>„Unser Badezimmer wurde komplett neu gefliest — das Ergebnis ist wunderschön. Saubere
-                    Arbeit, freundliches Team."</blockquote>
-                <span class="author">— Anna M., München</span>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="stars">★★★★★</div>
-                <blockquote>„Der Umzug war stressfrei und alles kam unbeschädigt an. Sehr empfehlenswert!"</blockquote>
-                <span class="author">— Viktor K., Augsburg</span>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="stars">★★★★★</div>
-                <blockquote>„Renovierung der ganzen Wohnung in nur zwei Wochen. Qualität top, Preis fair."</blockquote>
-                <span class="author">— Maria L., Nürnberg</span>
-            </div>
+        <div class="testimonials-grid" id="testimonial-slider-bau" data-aos="fade-up">
+            <!-- Populated by JS -->
         </div>
     </section>
 
@@ -538,22 +525,41 @@
 
     <!-- Footer -->
     <footer class="site-footer section" style="padding: 40px 8%;">
-        <p>&copy; 2026 AlexGrupp · <span data-i18n="footer-copy">Alle Rechte vorbehalten</span></p>
-        <div class="footer-links">
-            <a href="../index.html">Zurück zur Hauptseite</a>
-            <a href="../legal/impressum.html">Impressum</a>
-            <a href="../legal/datenschutz.html">Datenschutz</a>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 1.5rem;">
+            <p style="margin:0;">&copy; 2026 AlexGrupp &middot; <span data-i18n="footer-copy">Alle Rechte
+                    vorbehalten</span></p>
+            <div style="display:flex; gap: 1.5rem; align-items: center;">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"
+                    style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#94a3b8'">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"
+                    style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='#94a3b8'">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
+                    style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='#94a3b8'">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Zurück zur Hauptseite</a>
+                <a href="../legal/impressum.html" data-i18n="footer-impressum">Impressum</a>
+                <a href="../legal/datenschutz.html" data-i18n="footer-datenschutz">Datenschutz</a>
+            </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/i18n.js"></script>
+    <script src="../js/components/smart-header.js"></script>
+    <script src="../js/components/testimonial-slider.js"></script>
     <script>
         AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
-        window.addEventListener('scroll', () => {
-            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 30);
-        });
-        setTimeout(() => document.getElementById('hero').classList.add('loaded'), 80);
+        setTimeout(() => document.getElementById('hero')?.classList.add('loaded'), 80);
     </script>
 </body>
 

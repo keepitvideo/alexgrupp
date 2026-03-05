@@ -1,225 +1,361 @@
 /* ==========================================================================
-   Auto (Dark Theme) Variables & Styles
+   Auto Theme Overrides & Component Styles
    ========================================================================== */
-:root {
-    --color-auto-bg: #121212;
-    --color-auto-bg-light: #1e1e1e;
-    --color-auto-text: #f5f5f5;
-    --color-auto-text-muted: #a0a0a0;
 
-    --color-auto-primary: #e63946;
-    /* Sporty Red */
-    --color-auto-secondary: #457b9d;
-    /* Tech Blue */
-    --color-auto-accent: #00b4d8;
-    /* Neon Cyan */
-
-    --gradient-auto: linear-gradient(135deg, #121212 0%, #1a1a2e 100%);
-    --shadow-auto: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.theme-auto {
-    background-color: var(--color-auto-bg);
+body {
+    background: var(--color-auto-bg);
     color: var(--color-auto-text);
 }
 
-/* Split Screen Specifics */
-.split-side.split-auto {
-    background: var(--gradient-auto);
-    /* Optional: Background image for the Auto half */
-    background-image: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('../assets/auto-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn-primary-auto {
+    background: var(--color-auto-primary);
+    color: #fff;
+    border: 1px solid var(--color-auto-primary);
+    transition: var(--btn-transition);
+    box-shadow: 0 0 24px var(--color-auto-primary-glow);
 }
 
-.split-auto .content-wrapper {
+.btn-primary-auto:hover {
+    background: var(--color-auto-primary-hover);
+    border-color: var(--color-auto-primary-hover);
+    box-shadow: 0 6px 30px var(--color-auto-primary-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary-auto {
+    background: var(--color-auto-surface);
+    color: var(--color-auto-text);
+    border: 1px solid transparent;
+    transition: var(--btn-transition);
+}
+
+.btn-secondary-auto:hover {
+    background: var(--color-auto-primary);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
     position: relative;
-    z-index: 10;
+    height: 90vh;
+    min-height: 600px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 2rem;
+    justify-content: center;
     text-align: center;
-}
-
-.split-auto h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background: -webkit-linear-gradient(45deg, var(--color-auto-text), var(--color-auto-secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.split-auto p {
-    font-size: 1.2rem;
-    color: var(--color-auto-text-muted);
-    max-width: 80%;
-    margin-bottom: 2rem;
-}
-
-.btn-auto {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    background: transparent;
-    color: var(--color-auto-text);
-    border: 2px solid var(--color-auto-primary);
-    border-radius: 4px;
-    /* Brutalist/Tech edge */
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: var(--transition-fast);
-    position: relative;
     overflow: hidden;
 }
 
-.btn-auto::before {
-    content: '';
+.hero-bg {
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--color-auto-primary);
-    transition: var(--transition-fast);
-    z-index: -1;
-}
-
-.btn-auto:hover::before {
-    left: 0;
-}
-
-.btn-auto:hover {
-    box-shadow: 0 0 15px rgba(230, 57, 70, 0.5);
-}
-
-/* Internal Page Styles */
-.internal-page {
-    background-color: var(--color-auto-bg);
-}
-
-/* Hero Section */
-.hero-section {
-    position: relative;
-    height: 70vh;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('../assets/auto_hero.png');
+    inset: 0;
+    background-image: linear-gradient(to bottom, rgba(11, 15, 25, 0.4), var(--color-auto-bg)),
+        url('../assets/auto_hero.png');
     background-size: cover;
     background-position: center;
-    color: var(--color-auto-text);
+    transform: scale(1.05);
+    transition: transform 8s ease-out;
+}
+
+.hero.loaded .hero-bg {
+    transform: scale(1);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    padding: 0 24px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #ffffff, var(--color-auto-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--color-auto-text);
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--color-auto-text-muted);
+    margin-bottom: 2.5rem;
     max-width: 600px;
-    margin: 0 auto 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
-/* Section Common */
-.section {
-    padding: 100px 5%;
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.section-title {
+/* ==========================================================================
+   Counter Band
+   ========================================================================== */
+.counter-band {
+    display: flex;
+    justify-content: center;
+    background: var(--color-auto-surface);
+    border-top: 1px solid var(--color-auto-surface-border);
+    border-bottom: 1px solid var(--color-auto-surface-border);
+    flex-wrap: wrap;
+}
+
+.counter-item {
+    flex: 1;
+    min-width: 150px;
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    padding: 40px 24px;
+    border-right: 1px solid var(--color-auto-surface-border);
+}
+
+.counter-item:last-child {
+    border-right: none;
+}
+
+.counter-item .count {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--color-auto-text);
+    display: block;
+    line-height: 1;
+}
+
+.counter-item .label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-}
-
-/* Services Grid */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-card {
-    background: var(--color-auto-bg-light);
-    padding: 3rem 2rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: var(--transition-fast);
-    position: relative;
-    overflow: hidden;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--color-auto-primary);
-    box-shadow: var(--shadow-auto);
-}
-
-.service-card i {
-    font-size: 2.5rem;
-    color: var(--color-auto-primary);
-    margin-bottom: 1.5rem;
+    color: var(--color-auto-text-muted);
+    margin-top: 0.5rem;
     display: block;
 }
 
-.service-card h3 {
-    font-size: 1.5rem;
+/* ==========================================================================
+   Services Teaser
+   ========================================================================== */
+.services-teaser {
+    padding: var(--section-padding-desktop);
+    background: var(--color-auto-bg);
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-head .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-auto-accent);
     margin-bottom: 1rem;
-    color: var(--color-auto-text);
+    display: block;
+}
+
+.section-head h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+}
+
+.section-head p {
+    color: var(--color-auto-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.service-card {
+    background: var(--color-auto-surface);
+    border: 1px solid var(--color-auto-surface-border);
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-card);
+    transition: all 0.4s ease;
+    text-align: center;
+    /* Equal heights for all cards in a grid row */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Ensure anchor wrappers don't break height */
+.services-grid>a {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-auto-primary);
+    box-shadow: 0 16px 50px rgba(59, 125, 216, 0.15);
+}
+
+.service-card .icon {
+    font-size: 2.2rem;
+    color: var(--color-auto-primary);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .service-card p {
     color: var(--color-auto-text-muted);
-    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
-/* Footer Section */
-.footer-simple {
-    padding: 50px 5%;
-    background: #0a0a0a;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--color-auto-text-muted);
+.all-services-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ==========================================================================
+   Why Us Grid
+   ========================================================================== */
+.why-section {
+    padding: var(--section-padding-desktop);
+    background: var(--color-auto-surface);
+    border-top: 1px solid var(--color-auto-surface-border);
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+}
+
+.why-item {
     text-align: center;
 }
 
-.footer-nav {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.footer-nav a:hover {
+.why-item i {
+    font-size: 2rem;
     color: var(--color-auto-primary);
+    margin-bottom: 1.2rem;
+    display: block;
 }
 
+.why-item h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.why-item p {
+    color: var(--color-auto-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Testimonials (Basic Container, Slider JS will populate this)
+   ========================================================================== */
+.testimonials-section {
+    padding: var(--section-padding-desktop);
+    background: var(--color-auto-bg);
+}
+
+/* ==========================================================================
+   CTA BAND — V4: Midnight Steel Gradient with Ice Blue accent
+   ========================================================================== */
+.cta-band {
+    padding: var(--section-padding-desktop);
+    background: linear-gradient(135deg, #111827 0%, #0e1117 50%, #0c1020 100%);
+    border-top: 1px solid rgba(75, 172, 247, 0.15);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-band::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(59, 125, 216, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-band h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.cta-band p {
+    color: rgba(240, 244, 248, 0.65);
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+    position: relative;
+}
+
+.cta-band .btn {
+    background: var(--color-auto-primary);
+    color: #fff;
+    border: 1px solid rgba(75, 172, 247, 0.3);
+    font-weight: 700;
+    position: relative;
+    box-shadow: 0 0 30px rgba(59, 125, 216, 0.3);
+}
+
+.cta-band .btn:hover {
+    background: var(--color-auto-primary-hover);
+    box-shadow: 0 0 40px rgba(59, 125, 216, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
+    .counter-item {
+        min-width: 50%;
+        padding: 25px 15px;
     }
 
-    .section {
-        padding: 60px 20px;
+    .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .services-teaser,
+    .why-section,
+    .testimonials-section,
+    .cta-band {
+        padding: var(--section-padding-mobile);
     }
 }

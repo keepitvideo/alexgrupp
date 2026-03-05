@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/auto.css">
+    <link rel="icon" href="../assets/Photopea Logo Black.png" type="image/png">
 
     <style>
         body {
@@ -23,9 +24,39 @@
         }
 
         .page-hero {
+            position: relative;
             padding: 160px 8% 80px;
+            min-height: 380px;
             background: #111;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(13, 13, 13, 0.92) 0%, rgba(13, 13, 13, 0.65) 100%),
+                url('/Users/vasylkolos/.gemini/antigravity/brain/edba5273-94c8-4982-a0dd-6e1a174d9026/auto_kontakt_hero_laptop_right_1772707583743.png') 70% center/cover no-repeat;
+            z-index: 0;
+        }
+
+        .page-hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 6% 60px;
+                min-height: 300px;
+            }
         }
 
         .breadcrumb {
@@ -35,7 +66,7 @@
         }
 
         .breadcrumb a {
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
         }
 
         .breadcrumb span {
@@ -62,7 +93,7 @@
             font-weight: 600;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
             margin-bottom: 1rem;
             display: block;
         }
@@ -108,7 +139,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
             font-size: 1.1rem;
             flex-shrink: 0;
         }
@@ -129,7 +160,7 @@
         }
 
         .contact-method a:hover {
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
         }
 
         /* Form */
@@ -194,7 +225,7 @@
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: #e63946;
+            border-color: var(--color-auto-primary, #3b7dd8);
         }
 
         .form-group select option {
@@ -215,7 +246,7 @@
             text-transform: uppercase;
             margin-top: 0.5rem;
             cursor: pointer;
-            background: #e63946;
+            background: var(--color-auto-primary, #3b7dd8);
             color: #fff;
             border: none;
             border-radius: 6px;
@@ -309,7 +340,8 @@
     <!-- Header -->
     <header class="global-header scrolled" id="mainHeader">
         <div class="logo">
-            <a href="../index.html">ALEX<span>GRUPP</span></a>
+            <a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
+                    class="logo-icon">ALEX<span>GRUPP</span></a>
         </div>
         <nav class="header-nav">
             <a href="index.html" data-i18n="nav-start">Startseite</a>
@@ -318,10 +350,9 @@
             <a href="kontakt.html" class="active" data-i18n="nav-contact">Kontakt</a>
         </nav>
         <div class="header-controls">
-            <div class="theme-switcher" onclick="location.href='../bau/kontakt.html';">
-                <div class="slider"></div>
-                <span class="switch-auto">Auto</span>
-                <span class="switch-bau">Bau</span>
+            <div class="theme-switcher" id="themeSwitcher">
+                <button class="switch-btn active">Auto</button>
+                <button class="switch-btn" onclick="location.href='../bau/kontakt.html'">Bau</button>
             </div>
             <div id="langSwitcher"></div>
         </div>
@@ -351,30 +382,39 @@
                 <div class="contact-method-icon"><i class="fas fa-phone"></i></div>
                 <div>
                     <h4>Telefon</h4>
-                    <a href="tel:+49123456789">+49 (0) 123 456 789</a>
+                    <a href="tel:+4916093409671">+49 160 9340 9671</a>
                 </div>
             </div>
             <div class="contact-method">
                 <div class="contact-method-icon"><i class="fab fa-whatsapp"></i></div>
                 <div>
                     <h4>WhatsApp</h4>
-                    <a href="https://wa.me/49123456789">Nachricht senden</a>
+                    <a href="https://wa.me/4916093409671">Nachricht senden</a>
                 </div>
             </div>
             <div class="contact-method">
                 <div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
                 <div>
                     <h4>E-Mail</h4>
-                    <a href="mailto:auto@alexgrupp.de">auto@alexgrupp.de</a>
+                    <a href="mailto:info@alexgrupp.de">info@alexgrupp.de</a>
                 </div>
             </div>
             <div class="contact-method">
                 <div class="contact-method-icon"><i class="fas fa-map-marker-alt"></i></div>
                 <div>
                     <h4>Standort</h4>
-                    <p>Bayern, Deutschland<br><span style="color:rgba(255,255,255,0.35); font-size:0.85rem;">Genaue
-                            Adresse auf Anfrage</span></p>
+                    <p>Industriestraße 22<br>93077 Bad Abbach, Deutschland</p>
                 </div>
+            </div>
+
+            <!-- Google Maps in left column -->
+            <div
+                style="margin-top: 1.5rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--color-auto-surface-border);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2638.4!2d12.0432!3d48.9338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479f9c4b7e83a34b%3A0x0!2sIndustriestr.%2022%2C%2093077%20Bad%20Abbach!5e0!3m2!1sde!2sde!4v1234567890"
+                    width="100%" height="220" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="AlexGrupp KFZ — Industriestr. 22, Bad Abbach">
+                </iframe>
             </div>
         </div>
 
@@ -384,43 +424,120 @@
                 <h3>Anfrage senden</h3>
                 <p>Füllen Sie das Formular aus — wir melden uns so schnell wie möglich.</p>
                 <!-- Form action: replace with Formspree endpoint when ready -->
-                <form action="#" method="POST">
+                <!-- Advanced Booking Form -->
+                <form action="#" method="POST" id="bookingFormAuto">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="firstName">Vorname</label>
+                            <label for="firstName">Vorname *</label>
                             <input type="text" id="firstName" name="firstName" placeholder="Max" required>
                         </div>
                         <div class="form-group">
-                            <label for="lastName">Nachname</label>
+                            <label for="lastName">Nachname *</label>
                             <input type="text" id="lastName" name="lastName" placeholder="Mustermann" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-Mail</label>
-                        <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-Mail *</label>
+                            <input type="email" id="email" name="email" placeholder="max@beispiel.de" required>
+                        </div>
+                        <div class="form-group" id="phoneGroup">
+                            <label for="phone">Handy / Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+49 151 1234567">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon (optional)</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+49 …">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactPref">Bevorzugter Kontaktweg *</label>
+                            <select id="contactPref" name="contactPref" required onchange="togglePhoneReq(this)">
+                                <option value="email">E-Mail</option>
+                                <option value="wa_text">WhatsApp (Text)</option>
+                                <option value="wa_audio">WhatsApp (Audio)</option>
+                                <option value="phone">Telefonanruf</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Service / Thema *</label>
+                            <select id="topic" name="topic" required>
+                                <option value="" disabled selected>Bitte wählen</option>
+                                <option value="general">Allgemeiner Service</option>
+                                <option value="ac">Klimaservice</option>
+                                <option value="tires">Reifenwechsel (Winter/Sommer)</option>
+                                <option value="inspection">Diagnose / TÜV-Vorabcheck</option>
+                                <option value="repair">Fahrwerk- oder Motorreparatur</option>
+                                <option value="other">Sonstiges</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="topic">Thema</label>
-                        <select id="topic" name="topic">
-                            <option value="">Bitte wählen</option>
-                            <option value="diagnose">Fahrzeugdiagnose</option>
-                            <option value="repair">Reparatur & Wartung</option>
-                            <option value="inspection">Ankaufsinspektion</option>
-                            <option value="other">Sonstiges</option>
-                        </select>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prefDate">Wunschdatum</label>
+                            <input type="date" id="prefDate" name="prefDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="prefTime">Uhrzeit</label>
+                            <select id="prefTime" name="prefTime">
+                                <option value="any">Egal</option>
+                                <option value="08-10">08:00 - 10:00 Uhr</option>
+                                <option value="10-12">10:00 - 12:00 Uhr</option>
+                                <option value="13-15">13:00 - 15:00 Uhr</option>
+                                <option value="15-17">15:00 - 17:00 Uhr</option>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="message">Nachricht</label>
-                        <textarea id="message" name="message" placeholder="Beschreiben Sie kurz Ihr Anliegen …"
+                        <label for="message">Ihre Nachricht / Fahrzeugdaten</label>
+                        <textarea id="message" name="message"
+                            placeholder="Bitte beschreiben Sie kurz Ihr Anliegen oder geben Sie Modell/Baujahr an..."
                             required></textarea>
                     </div>
-                    <button type="submit" class="form-submit">Anfrage absenden</button>
-                    <p class="form-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer <a
-                            href="../legal/datenschutz.html" style="color:#e63946;">Datenschutzerklärung</a> zu.</p>
+
+                    <div class="form-group"
+                        style="flex-direction: row; gap: 12px; align-items: flex-start; margin-top: 1rem;">
+                        <input type="checkbox" id="gdpr" name="gdpr" required
+                            style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;">
+                        <label for="gdpr"
+                            style="text-transform: none; letter-spacing: normal; font-weight: 400; line-height: 1.5; cursor: pointer;">
+                            Ich stimme zu, dass meine Daten gemäß der <a href="../legal/datenschutz.html"
+                                style="color:var(--color-auto-primary); text-decoration:underline;">Datenschutzerklärung</a>
+                            verarbeitet werden, um meine Anfrage zu beantworten. *
+                        </label>
+                    </div>
+
+                    <div class="form-group"
+                        style="flex-direction: row; gap: 12px; align-items: flex-start; margin-top: 0.5rem; margin-bottom: 2rem;">
+                        <input type="checkbox" id="newsletter" name="newsletter"
+                            style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;">
+                        <label for="newsletter"
+                            style="text-transform: none; letter-spacing: normal; font-weight: 400; line-height: 1.5; cursor: pointer;">
+                            Ja, ich möchte mich für den Newsletter anmelden und <strong>10% Rabatt</strong> auf den
+                            nächsten Service erhalten (Optional).
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit btn-primary-auto"
+                        style="border:none; color:#fff; background:var(--color-auto-primary);">Anfrage verbindlich
+                        absenden</button>
+
+                    <script>
+                        // Make phone mandatory if WhatsApp or Call is selected
+                        function togglePhoneReq(select) {
+                            const val = select.value;
+                            const phoneInput = document.getElementById('phone');
+                            const phoneLabel = document.querySelector('#phoneGroup label');
+                            if (val === 'wa_text' || val === 'wa_audio' || val === 'phone') {
+                                phoneInput.required = true;
+                                phoneLabel.textContent = 'Handy / Telefon *';
+                            } else {
+                                phoneInput.required = false;
+                                phoneLabel.textContent = 'Handy / Telefon';
+                            }
+                        }
+                    </script>
                 </form>
             </div>
         </div>
@@ -457,21 +574,40 @@
 
     <!-- Footer -->
     <footer class="site-footer section" style="padding:40px 8%;">
-        <p>&copy; 2026 AlexGrupp · Alle Rechte vorbehalten</p>
-        <div class="footer-links">
-            <a href="../index.html">Hauptseite</a>
-            <a href="../legal/impressum.html">Impressum</a>
-            <a href="../legal/datenschutz.html">Datenschutz</a>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 1.5rem;">
+            <p style="margin:0;">&copy; 2026 AlexGrupp &middot; Alle Rechte vorbehalten</p>
+            <!-- Social Links -->
+            <div style="display:flex; gap: 1.5rem; align-items: center;">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"
+                    title="Instagram" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='var(--color-auto-primary, #3b7dd8)'"
+                    onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"
+                    title="Facebook" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
+                    title="LinkedIn" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; transition: color 0.2s;"
+                    onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Hauptseite</a>
+                <a href="../legal/impressum.html">Impressum</a>
+                <a href="../legal/datenschutz.html">Datenschutz</a>
+            </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/i18n.js"></script>
+    <script src="../js/components/smart-header.js"></script>
     <script>
         AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
-        window.addEventListener('scroll', () => {
-            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 30);
-        });
     </script>
 </body>
 

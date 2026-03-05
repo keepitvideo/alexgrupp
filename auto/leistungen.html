@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/auto.css">
+    <link rel="icon" href="../assets/Photopea Logo Black.png" type="image/png">
 
     <style>
         body {
@@ -23,9 +24,39 @@
         }
 
         .page-hero {
+            position: relative;
             padding: 160px 8% 80px;
+            min-height: 380px;
             background: #111;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(13, 13, 13, 0.94) 0%, rgba(13, 13, 13, 0.72) 100%),
+                url('/Users/vasylkolos/.gemini/antigravity/brain/edba5273-94c8-4982-a0dd-6e1a174d9026/auto_hero_leistungen_1772655432175.png') center/cover no-repeat;
+            z-index: 0;
+        }
+
+        .page-hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 120px 6% 60px;
+                min-height: 300px;
+            }
         }
 
         .breadcrumb {
@@ -36,7 +67,7 @@
         }
 
         .breadcrumb a {
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
         }
 
         .breadcrumb span {
@@ -158,7 +189,7 @@
         /* CTA footer */
         .cta-band {
             padding: 80px 8%;
-            background: #e63946;
+            background: linear-gradient(135deg, #111827 0%, #0e1117 50%, #0c1020 100%);
             text-align: center;
         }
 
@@ -176,7 +207,7 @@
 
         .cta-band .btn {
             background: #fff;
-            color: #e63946;
+            color: var(--color-auto-primary, #3b7dd8);
             border-color: #fff;
             font-weight: 700;
         }
@@ -206,7 +237,8 @@
     <!-- Header -->
     <header class="global-header scrolled" id="mainHeader">
         <div class="logo">
-            <a href="../index.html">ALEX<span>GRUPP</span></a>
+            <a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
+                    class="logo-icon">ALEX<span>GRUPP</span></a>
         </div>
         <nav class="header-nav">
             <a href="index.html" data-i18n="nav-start">Startseite</a>
@@ -215,10 +247,9 @@
             <a href="kontakt.html" data-i18n="nav-contact">Kontakt</a>
         </nav>
         <div class="header-controls">
-            <div class="theme-switcher" onclick="location.href='../bau/leistungen.html';">
-                <div class="slider"></div>
-                <span class="switch-auto">Auto</span>
-                <span class="switch-bau">Bau</span>
+            <div class="theme-switcher" id="themeSwitcher">
+                <button class="switch-btn active">Auto</button>
+                <button class="switch-btn" onclick="location.href='../bau/leistungen.html'">Bau</button>
             </div>
             <div id="langSwitcher"></div>
         </div>
@@ -371,11 +402,9 @@
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/i18n.js"></script>
+    <script src="../js/components/smart-header.js"></script>
     <script>
         AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
-        window.addEventListener('scroll', () => {
-            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 30);
-        });
     </script>
 </body>
 

@@ -4,45 +4,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum | AlexGroup</title>
+    <title>Impressum | AlexGrupp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../styles/global.css">
     <style>
         body {
-            background: #fdfdfd;
-            color: #333;
-            padding: 50px 5%;
+            background: #fafafa;
+            color: #0f172a;
             font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .container {
+        .header-simple {
+            padding: 24px 8%;
+            background: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #0f172a;
+        }
+
+        .legal-content {
+            flex: 1;
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.6;
+            padding: 80px 24px;
+            width: 100%;
         }
 
-        h1 {
-            margin-bottom: 2rem;
+        .legal-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+            color: #0f172a;
         }
 
-        h2 {
-            margin-top: 2rem;
+        .legal-content h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .legal-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content a {
+            color: #1e40af;
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            padding: 40px 8%;
+            text-align: center;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <header class="header-simple">
+        <div class="logo"><a href="../index.html">ALEX<span>GRUPP</span></a></div>
+        <a href="../index.html" class="back-link">← Zurück zur Startseite</a>
+    </header>
+
+    <main class="legal-content">
         <h1>Impressum</h1>
         <p>Angaben gemäß § 5 TMG</p>
 
         <h2>Kontakt</h2>
-        <p>AlexGroup<br>
+        <p>
+            <strong>AlexGrupp</strong><br>
             Musterstraße 123<br>
-            80331 München</p>
+            80331 München
+        </p>
 
-        <p>Telefon: +49 (0) 123 456789<br>
-            E-Mail: info@alexgroup.d</p>
+        <p>
+            Telefon: +49 (0) 123 456789<br>
+            E-Mail: kontakt@alexgrupp.de
+        </p>
 
         <h2>Umsatzsteuer-ID</h2>
         <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
@@ -50,14 +127,15 @@
 
         <h2>EU-Streitschlichtung</h2>
         <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-            <a href="https://ec.europa.eu/consumers/odr/" target="_blank">https://ec.europa.eu/consumers/odr/</a>.<br>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank"
+                rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>
             Unsere E-Mail-Adresse finden Sie oben im Impressum.
         </p>
+    </main>
 
-        <div style="margin-top: 3rem;">
-            <a href="../index.html" style="color: #666;">&larr; Zurück zur Startseite</a>
-        </div>
-    </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 AlexGrupp · Alle Rechte vorbehalten</p>
+    </footer>
 </body>
 
 </html>
