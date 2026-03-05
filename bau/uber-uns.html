@@ -274,7 +274,7 @@
 </head>
 
 <body>
-    <header class="global-header scrolled" id="mainHeader">
+    <header class="global-header" id="mainHeader">
         <div class="logo"><a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
                     class="logo-icon logo-icon-bau">ALEX<span>GRUPP</span></a></div>
         <nav class="header-nav">
@@ -293,10 +293,16 @@
     </header>
 
     <section class="page-hero">
-        <div class="breadcrumb"><a href="index.html">Startseite</a><span>›</span>Über uns</div>
-        <span class="eyebrow">Wer wir sind</span>
-        <h1>Qualität, die man<br>sieht und fühlt</h1>
-        <p>Erfahren Sie mehr über das Team und die Werte, die AlexGrupp Bau ausmachen.</p>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <div class="breadcrumb">
+                <a href="index.html">Startseite</a>
+                <span>›</span>
+                Über uns
+            </div>
+            <span class="eyebrow" data-i18n="bau-about-eyebrow">Wer wir sind</span>
+            <h1 data-i18n="bau-about-title">Präzision in jedem Detail</h1>
+            <p>Erfahren Sie mehr über die Vision und das Team von AlexGrupp im Bereich Bau & Innenausbau.</p>
+        </div>
     </section>
 
     <section class="about-intro">
@@ -312,8 +318,8 @@
                 <a href="kontakt.html" class="btn btn-primary-bau"
                     style="margin-top:1.5rem; display:inline-flex;">Kontakt aufnehmen</a>
             </div>
-            <div data-aos="fade-left">
-                <img src="../assets/bau_hero.png" alt="AlexGrupp Innenausbau Team">
+            <div class="interactive-img-container" data-aos="fade-left">
+                <img src="../assets/bau_hero.png" alt="AlexGrupp Innenausbau Team" class="interactive-img">
             </div>
         </div>
     </section>
@@ -383,23 +389,33 @@
                 </div>
             </div>
         </div>
-    </section>
+        <!-- Footer -->
+        <footer class="site-footer section" style="padding:40px 8%;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 1.5rem;">
+                <p style="margin:0;">&copy; 2026 AlexGrupp &middot; Alle Rechte vorbehalten</p>
+                <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                    <div class="social-links" style="display:flex; gap: 1rem; align-items: center;">
+                        <a href="https://www.instagram.com/alexgrupp.innenausbau/" target="_blank" rel="noopener"
+                            aria-label="Instagram" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                            onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#94a3b8'">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="../index.html">Hauptseite</a>
+                        <a href="../legal/impressum.html">Impressum</a>
+                        <a href="../legal/datenschutz.html">Datenschutz</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    <footer class="site-footer section" style="padding:40px 8%;">
-        <p>&copy; 2026 AlexGrupp · Alle Rechte vorbehalten</p>
-        <div class="footer-links">
-            <a href="../index.html">Hauptseite</a>
-            <a href="../legal/impressum.html">Impressum</a>
-            <a href="../legal/datenschutz.html">Datenschutz</a>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="../js/i18n.js"></script>
-    <script src="../js/components/smart-header.js"></script>
-    <script>
-        AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
-    </script>
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script src="../js/i18n.js"></script>
+        <script src="../js/components/smart-header.js"></script>
+        <script>
+            AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
+        </script>
 </body>
 
 </html>

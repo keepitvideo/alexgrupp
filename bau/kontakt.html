@@ -321,11 +321,56 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* === German Form Validation Styles === */
+        .input-invalid {
+            border-color: #e63946 !important;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.25) !important;
+        }
+
+        .form-error-msg {
+            display: block;
+            color: #e63946;
+            font-size: 0.78rem;
+            font-weight: 500;
+            margin-top: 5px;
+            letter-spacing: 0.01em;
+        }
+
+        @keyframes inputShake {
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-6px);
+            }
+
+            40% {
+                transform: translateX(6px);
+            }
+
+            60% {
+                transform: translateX(-4px);
+            }
+
+            80% {
+                transform: translateX(4px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .input-shake {
+            animation: inputShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
     </style>
 </head>
 
 <body>
-    <header class="global-header scrolled" id="mainHeader">
+    <header class="global-header" id="mainHeader">
         <div class="logo"><a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
                     class="logo-icon logo-icon-bau">ALEX<span>GRUPP</span></a></div>
         <nav class="header-nav">
@@ -344,11 +389,16 @@
     </header>
 
     <section class="page-hero">
-        <div class="breadcrumb"><a href="index.html">Startseite</a><span>›</span>Kontakt</div>
-        <span class="eyebrow" data-i18n="auto-contact-eyebrow">Jetzt anfragen</span>
-        <h1 data-i18n="auto-contact-title">So erreichen Sie uns</h1>
-        <p data-i18n="auto-contact-desc">Telefonisch, per WhatsApp oder E-Mail — wir antworten schnell und persönlich.
-        </p>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <div class="breadcrumb">
+                <a href="index.html">Startseite</a>
+                <span>›</span>
+                Kontakt & Angebot
+            </div>
+            <span class="eyebrow" data-i18n="bau-contact-eyebrow">Projekt besprechen</span>
+            <h1 data-i18n="bau-contact-title">Wir bauen Ihre Vision</h1>
+            <p>Beschreiben Sie uns Ihr Bauvorhaben. Wir melden uns umgehend mit einem verbindlichen Angebot.</p>
+        </div>
     </section>
 
     <div class="contact-layout">
@@ -445,8 +495,8 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="prefDate">Wunschdatum Bemusterung/Start</label>
-                            <input type="date" id="prefDate" name="prefDate">
+                            <label for="prefDate">Wunschdatum Bemusterung/Start *</label>
+                            <input type="date" id="prefDate" name="prefDate" required>
                         </div>
                         <div class="form-group">
                             <label for="prefTime">Uhrzeit Rückruf (optional)</label>
@@ -461,10 +511,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Details zum Vorhaben *</label>
+                        <label for="message">Details zum Vorhaben</label>
                         <textarea id="message" name="message"
-                            placeholder="Bitte beschreiben Sie kurz Ihr Projekt, z.B. Raumgröße, gewünschtes Material..."
-                            required></textarea>
+                            placeholder="Bitte beschreiben Sie kurz Ihr Projekt, z.B. Raumgröße, gewünschtes Material..."></textarea>
                     </div>
 
                     <div class="form-group"
@@ -542,28 +591,30 @@
     <footer class="site-footer section" style="padding:40px 8%;">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 1.5rem;">
             <p style="margin:0;">&copy; 2026 AlexGrupp &middot; Alle Rechte vorbehalten</p>
-            <!-- Social Links -->
-            <div style="display:flex; gap: 1.5rem; align-items: center;">
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"
-                    title="Instagram" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
-                    onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#94a3b8'">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"
-                    title="Facebook" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
-                    onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='#94a3b8'">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
-                    title="LinkedIn" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
-                    onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='#94a3b8'">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-            <div class="footer-links">
-                <a href="../index.html">Hauptseite</a>
-                <a href="../legal/impressum.html">Impressum</a>
-                <a href="../legal/datenschutz.html">Datenschutz</a>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div class="social-links" style="display:flex; gap: 1rem; align-items: center;">
+                    <a href="https://www.instagram.com/alexgrupp.innenausbau/" target="_blank" rel="noopener"
+                        aria-label="Instagram" title="Instagram"
+                        style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                        onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"
+                        title="Facebook" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                        onmouseover="this.style.color='#1877F2'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"
+                        title="LinkedIn" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                        onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Hauptseite</a>
+                    <a href="../legal/impressum.html">Impressum</a>
+                    <a href="../legal/datenschutz.html">Datenschutz</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -571,6 +622,7 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/components/smart-header.js"></script>
+    <script src="../js/components/form-validate.js"></script>
     <script>
         AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
     </script>

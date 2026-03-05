@@ -13,9 +13,10 @@ class SmartHeader {
         if (!this.header) return;
 
         this.prevScrollY = window.scrollY;
-        this.hidden = false;
+        this.hidden = true; // start in hidden state
         this.ticking = false;
         this.mouseNearTop = false;
+        this.entryDone = false;
 
         this.init();
     }
@@ -31,6 +32,15 @@ class SmartHeader {
         if (this.hidden) {
             this.hidden = false;
             this.header.classList.remove('header-hidden');
+            if (!this.entryDone) {
+                this.entryDone = true;
+                // slight delay so CSS transition has time to register
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        this.header.classList.add('header-loaded');
+                    });
+                });
+            }
         }
     }
 
@@ -89,13 +99,18 @@ class SmartHeader {
             if (delta > 40 && window.scrollY <= 10) this.show();
         }, { passive: true });
 
-        // Initial state
-        if (window.scrollY <= 10) {
-            this.show();
-        } else {
-            this.hide();
-        }
-        updateScrolledClass();
+        // Initial state — always show on load with entrance animation
+        setTimeout(() => {
+            if (window.scrollY <= 10) {
+                this.show();
+            } else {
+                // scrolled down on load — show briefly then hide
+                this.header.classList.add('header-loaded');
+                this.entryDone = true;
+                this.hide();
+            }
+            updateScrolledClass();
+        }, 120);
     }
 }
 
@@ -192,8 +207,14 @@ class CookieBanner {
     }
 }
 
-// Initialize on DOM Load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize robustly
+function initComponents() {
     new SmartHeader();
     new CookieBanner();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initComponents);
+} else {
+    initComponents();
+}

@@ -230,7 +230,7 @@
 </head>
 
 <body>
-    <header class="global-header scrolled" id="mainHeader">
+    <header class="global-header" id="mainHeader">
         <div class="logo"><a href="../index.html"><img src="../assets/Photopea Logo Black.png" alt="AG"
                     class="logo-icon logo-icon-bau">ALEX<span>GRUPP</span></a></div>
         <nav class="header-nav">
@@ -249,10 +249,16 @@
     </header>
 
     <section class="page-hero">
-        <div class="breadcrumb"><a href="index.html">Startseite</a><span>›</span>Leistungen</div>
-        <span class="eyebrow">Was wir anbieten</span>
-        <h1>Unsere Leistungen</h1>
-        <p>Handwerkliche Perfektion in jedem Bereich — vom Fliesenlegen bis zum Umzug.</p>
+        <div data-aos="fade-down" data-aos-duration="1000">
+            <div class="breadcrumb">
+                <a href="index.html">Startseite</a>
+                <span>›</span>
+                Leistungen
+            </div>
+            <span class="eyebrow" data-i18n="bau-services-eyebrow">Unsere Expertise</span>
+            <h1 data-i18n="bau-services-title">Hochwertiger Innenausbau</h1>
+            <p>Ob Renovierung, Trockenbau oder Akustiklösungen — wir realisieren Ihr Projekt termingerecht.</p>
+        </div>
     </section>
 
     <main class="services-content">
@@ -375,13 +381,24 @@
         <p>Kontaktieren Sie uns — kostenlose Beratung und verbindlicher Kostenvoranschlag.</p>
         <a href="kontakt.html" class="btn">Jetzt anfragen</a>
     </section>
-
+    <!-- Footer -->
     <footer class="site-footer section" style="padding:40px 8%;">
-        <p>&copy; 2026 AlexGrupp · Alle Rechte vorbehalten</p>
-        <div class="footer-links">
-            <a href="../index.html">Hauptseite</a>
-            <a href="../legal/impressum.html">Impressum</a>
-            <a href="../legal/datenschutz.html">Datenschutz</a>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 1.5rem;">
+            <p style="margin:0;">&copy; 2026 AlexGrupp &middot; Alle Rechte vorbehalten</p>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <div class="social-links" style="display:flex; gap: 1rem; align-items: center;">
+                    <a href="https://www.instagram.com/alexgrupp.innenausbau/" target="_blank" rel="noopener"
+                        aria-label="Instagram" style="color: #94a3b8; font-size: 1.3rem; transition: color 0.2s;"
+                        onmouseover="this.style.color='#E1306C'" onmouseout="this.style.color='#94a3b8'">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Hauptseite</a>
+                    <a href="../legal/impressum.html">Impressum</a>
+                    <a href="../legal/datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
         </div>
     </footer>
 
