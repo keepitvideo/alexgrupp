@@ -169,6 +169,42 @@ img {
   opacity: 0.7;
 }
 
+/* Burger Menu Toggle */
+.burger-menu {
+  display: none;
+  /* Desktop hidden */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+  margin-left: 10px;
+}
+
+.burger-menu span {
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.burger-menu.active span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 /* Logo icon (AG monogram) beside wordmark */
 .logo-icon {
   height: 28px;
@@ -468,13 +504,397 @@ img {
 
 
 /* ==========================================================================
-   Responsive — V5: Comprehensive Multi-Breakpoint
+   Responsive — V6: Full Device Coverage (320px → 4K)
+   Breakpoints:
+     320–479px  : Small phones (iPhone SE, Galaxy S mini)
+     480–767px  : Large phones (iPhone 14, Galaxy S23)
+     768–1023px : Tablets (iPad, Surface)
+     1024–1239px: Small laptops (MacBook Air 13", 1080p HD)
+     1240–1439px: Laptops (MacBook Pro 14", 1440p)
+     1440px+    : Wide screens, 4K monitors
    ========================================================================== */
 
-/* Wide screens */
+/* ── Ultra Wide / 4K ─────────────────────────────────────── */
 @media (min-width: 1440px) {
   :root {
-    --section-padding: 120px 10%;
+    --section-padding: 130px 12%;
+  }
+}
+
+/* ── Laptop / Desktop ────────────────────────────────────── */
+@media (max-width: 1240px) {
+  :root {
+    --section-padding: 80px 6%;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ── Small Laptop / Large Tablet Landscape ───────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --section-padding: 72px 5%;
+  }
+
+  .counter-strip {
+    gap: 2.5rem;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ── Tablet Portrait (768px) ─────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 64px 5%;
+    --section-padding-mobile: 50px 20px;
+  }
+
+  /* === HEADER: Switch to burger mode === */
+  .global-header {
+    height: 64px;
+    padding: 0 20px;
+  }
+
+  /* Mobile fullscreen navigation overlay */
+  .header-nav {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 10, 18, 0.97);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 1000;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.55s ease;
+    pointer-events: none;
+  }
+
+  .header-nav.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header-nav a {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    padding: 0.5rem 1rem;
+    /* bigger tap target */
+  }
+
+  .header-nav a:hover,
+  .header-nav a.active {
+    opacity: 0.7;
+  }
+
+  .header-nav a:active {
+    transform: scale(0.97);
+  }
+
+  /* Show burger icon */
+  .burger-menu {
+    display: flex;
+  }
+
+  .burger-menu span {
+    background: #fff;
+  }
+
+  .header-controls {
+    gap: 0.75rem;
+  }
+
+  .theme-switcher .switch-btn {
+    padding: 5px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* === LAYOUT === */
+  .section {
+    padding: var(--section-padding-mobile);
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem;
+  }
+
+  /* Counter */
+  .counter-strip {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 30px 20px;
+  }
+
+  .counter-item .count {
+    font-size: 2rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Forms */
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Mobile (481–767px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 56px 4%;
+    --section-padding-mobile: 44px 16px;
+    --btn-padding: 0.85rem 1.6rem;
+    --btn-font-size: 0.9rem;
+  }
+
+  /* Header */
+  .global-header {
+    height: 56px;
+    padding: 0 16px;
+  }
+
+  .global-header .logo {
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
+  }
+
+  .theme-switcher .switch-btn {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  #langSwitcher {
+    display: none;
+    /* hide language flags on small phones */
+  }
+
+  /* Typography */
+  h1 {
+    font-size: clamp(1.85rem, 9vw, 2.8rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+  }
+
+  h3 {
+    font-size: 1.15rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Counter */
+  .counter-band,
+  .counter-strip {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .counter-item {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px 24px;
+    min-width: 100%;
+  }
+
+  /* Grids */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem;
+  }
+
+  .why-item p {
+    font-size: 0.82rem;
+  }
+
+  /* Contact */
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .contact-form-card {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .contact-info iframe {
+    height: 180px !important;
+  }
+
+  /* Testimonials */
+  .ts-wrapper {
+    padding: 0 10px !important;
+  }
+
+  .ts-card {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .ts-text {
+    font-size: 0.9rem !important;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 28px 16px !important;
+    font-size: 0.85rem;
+  }
+
+  /* Pricing cards */
+  .packages-section .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* CTA band */
+  .cta-band h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-band p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Small phones (up to 360px) ──────────────────────────── */
+@media (max-width: 360px) {
+  :root {
+    --btn-padding: 0.75rem 1.25rem;
+  }
+
+  .global-header {
+    height: 52px;
+    padding: 0 12px;
+  }
+
+  .global-header .logo {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  /* Single column everything on tiny screens */
+  .packages-section .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Burger icon slightly smaller */
+  .burger-menu {
+    width: 21px;
+    height: 15px;
+  }
+
+  /* Menu nav links smaller */
+  .header-nav a {
+    font-size: 1.65rem;
+  }
+}
+
+/* ── Touch devices: guaranteed tap targets ───────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 48px;
+  }
+
+  .switch-btn {
+    min-height: 40px;
+  }
+
+  .burger-menu {
+    /* Invisible padding to increase tap area without changing visuals */
+    padding: 12px 10px;
+    margin: -12px -10px;
+  }
+
+  .contact-method a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-nav a {
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -516,7 +936,50 @@ img {
 
   /* Hide nav links, show hamburger placeholder */
   .header-nav {
-    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 12, 18, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+  }
+
+  .header-nav.active {
+    transform: translateX(0);
+    opacity: 1;
+    display: flex;
+  }
+
+  .header-nav a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff !important;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .header-nav a:active {
+    transform: scale(0.95);
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  /* Make sure burger is visible on both themes */
+  .burger-menu span {
+    background: #fff;
   }
 
   .header-controls {

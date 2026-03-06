@@ -17,14 +17,16 @@ class SmartHeader {
         this.ticking = false;
         this.mouseNearTop = false;
         this.entryDone = false;
+        this.menuOpen = false;
 
         this.init();
     }
 
     hide() {
-        if (!this.hidden) {
+        if (!this.hidden && !this.menuOpen) {
             this.hidden = true;
             this.header.classList.add('header-hidden');
+            this.header.classList.remove('visible');
         }
     }
 
@@ -32,6 +34,7 @@ class SmartHeader {
         if (this.hidden) {
             this.hidden = false;
             this.header.classList.remove('header-hidden');
+            this.header.classList.add('visible');
             if (!this.entryDone) {
                 this.entryDone = true;
                 // slight delay so CSS transition has time to register
@@ -111,6 +114,29 @@ class SmartHeader {
             }
             updateScrolledClass();
         }, 120);
+
+        // Burger Menu Toggle
+        const burger = document.getElementById('burgerToggle');
+        const nav = document.getElementById('headerNav');
+
+        if (burger && nav) {
+            burger.addEventListener('click', () => {
+                this.menuOpen = !this.menuOpen;
+                burger.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.style.overflow = this.menuOpen ? 'hidden' : '';
+            });
+
+            // Close menu when link is clicked
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    this.menuOpen = false;
+                    burger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
     }
 }
 

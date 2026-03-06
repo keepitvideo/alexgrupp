@@ -335,12 +335,33 @@ body {
 }
 
 /* ==========================================================================
-   Responsive
+   Auto – Responsive (mirrors global.css V6 breakpoints)
    ========================================================================== */
+
+/* ── Small Laptop / Tablet Landscape ─── */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+    }
+
+    .page-hero {
+        padding: 120px 5% 80px;
+    }
+
+    .services-teaser,
+    .why-section,
+    .testimonials-section,
+    .cta-band {
+        padding: 70px 5%;
+    }
+}
+
+/* ── Tablet Portrait ──────────────────── */
 @media (max-width: 768px) {
-    .counter-item {
-        min-width: 50%;
-        padding: 25px 15px;
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: 2.2rem;
     }
 
     .hero-ctas {
@@ -348,14 +369,72 @@ body {
         align-items: stretch;
     }
 
-    .hero-content h1 {
-        font-size: 2.2rem;
+    /* Page hero (sub-pages) */
+    .page-hero {
+        padding: 110px 5% 60px;
+        min-height: 320px;
     }
 
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 6vw, 2.6rem);
+    }
+
+    /* Sections */
     .services-teaser,
     .why-section,
     .testimonials-section,
     .cta-band {
         padding: var(--section-padding-mobile);
+    }
+
+    /* Counter */
+    .counter-item {
+        min-width: 50%;
+        padding: 25px 15px;
+    }
+}
+
+/* ── Mobile Phone ─────────────────────── */
+@media (max-width: 480px) {
+
+    /* Hero */
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        max-width: 100%;
+    }
+
+    /* Page hero */
+    .page-hero {
+        padding: 96px 4% 48px;
+        min-height: 280px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: 0.8rem;
+    }
+
+    /* CTA band */
+    .cta-band h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-band p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ── Small Phones ─────────────────────── */
+@media (max-width: 360px) {
+    .hero-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .page-hero {
+        padding: 88px 4% 40px;
     }
 }

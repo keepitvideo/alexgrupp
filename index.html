@@ -23,6 +23,14 @@
         body {
             background: #0d0d0d;
             overflow: hidden;
+            /* desktop: full-screen fixed layout */
+        }
+
+        /* ON MOBILE: allow scrolling, stack vertically */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
         }
 
         /* Split container */
@@ -265,7 +273,23 @@
 
             .split-auto h1,
             .split-bau h1 {
-                font-size: 2.4rem;
+                font-size: clamp(1.9rem, 8vw, 2.8rem);
+            }
+
+            .split-auto p,
+            .split-bau p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .split-side {
+                min-height: 52vh;
+            }
+
+            .split-auto h1,
+            .split-bau h1 {
+                font-size: clamp(1.7rem, 9vw, 2.4rem);
             }
         }
     </style>
@@ -285,13 +309,23 @@
         <div class="logo">
             <a href="index.html">ALEX<span>GRUPP</span></a>
         </div>
+        <nav class="header-nav" id="headerNav">
+            <!-- Root page nav implies going to either branch or kontakt -->
+            <a href="auto/index.html" data-i18n="nav-auto-branch">Auto Service</a>
+            <a href="bau/index.html" data-i18n="nav-bau-branch">Bau / Renovierung</a>
+            <a href="auto/kontakt.html" data-i18n="nav-contact">Kontakt</a>
+        </nav>
         <div class="header-controls">
             <div class="theme-switcher" id="themeSwitcher">
-                <div class="slider"></div>
-                <span class="switch-auto" data-i18n="nav-auto">Auto</span>
-                <span class="switch-bau" data-i18n="nav-bau">Bau</span>
+                <button class="switch-btn" onclick="location.href='auto/index.html'">Auto</button>
+                <button class="switch-btn" onclick="location.href='bau/index.html'">Bau</button>
             </div>
             <div id="langSwitcher"></div>
+            <button class="burger-menu" id="burgerToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
