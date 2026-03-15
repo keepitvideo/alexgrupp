@@ -311,6 +311,13 @@
                         <p>Fahrzeugkonfiguration, Software-Updates und Sonderausstattungen freischalten.</p>
                     </div>
                 </div>
+                <div class="service-item">
+                    <div class="service-item-icon"><i class="fas fa-truck-pickup"></i></div>
+                    <div>
+                        <h4>Abschleppdienst für Kunden</h4>
+                        <p>Wir holen Ihr nicht fahrbereites Fahrzeug auf Wunsch direkt zu uns in die Werkstatt.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -323,8 +330,9 @@
                 <div class="service-item">
                     <div class="service-item-icon"><i class="fas fa-oil-can"></i></div>
                     <div>
-                        <h4>Ölwechsel & Service</h4>
-                        <p>Inspektion nach Herstellervorgaben mit hochwertigen Materialien.</p>
+                        <h4>Kleiner Kundendienst</h4>
+                        <p>Öl- & Filterwechsel nach Herstellervorgaben mit Premium-Materialien.</p>
+                        <span style="display:inline-block; margin-top:6px; font-weight:700; color:var(--clr-auto-accent); cursor:pointer; font-size:0.95rem;" data-modal="modal-service">ab 185 € (Details ansehen) &rarr;</span>
                     </div>
                 </div>
                 <div class="service-item">
@@ -335,17 +343,19 @@
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-item-icon"><i class="fas fa-cog"></i></div>
+                    <div class="service-item-icon"><i class="fas fa-car-side"></i></div>
                     <div>
-                        <h4>Motor & Getriebe</h4>
-                        <p>Reparaturen und Revisionen für alle Antriebskonzepte.</p>
+                        <h4>Reifen- & Räderservice</h4>
+                        <p>Radwechsel, Montage, Auswuchten (bis 22 Zoll) und RDKS-Anlernen.</p>
+                        <span style="display:inline-block; margin-top:6px; font-weight:700; color:var(--clr-auto-accent); cursor:pointer; font-size:0.95rem;" data-modal="modal-reifen">ab 90 € (Details ansehen) &rarr;</span>
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-item-icon"><i class="fas fa-wind"></i></div>
+                    <div class="service-item-icon"><i class="fas fa-snowflake"></i></div>
                     <div>
-                        <h4>Klimaanlage</h4>
-                        <p>Befüllung, Dichtigkeitsprüfung, Wartung und Reparatur.</p>
+                        <h4>Klimaservice</h4>
+                        <p>Befüllung, Dichtigkeitsprüfung und Wartung der Klimaanlage.</p>
+                        <span style="display:inline-block; margin-top:6px; font-weight:700; color:var(--clr-auto-accent); cursor:pointer; font-size:0.95rem;" data-modal="modal-klima">ab 22 € / 100g (Details ansehen) &rarr;</span>
                     </div>
                 </div>
             </div>
@@ -385,6 +395,13 @@
                         <p>Wir begleiten Sie zu Terminen und prüfen Fahrzeuge vor Ort.</p>
                     </div>
                 </div>
+                <div class="service-item">
+                    <div class="service-item-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div>
+                        <h4>HU/AU-Vorabcheck & Mängelbehebung</h4>
+                        <p>Wir machen Ihr Auto fit für den TÜV — inklusive Smart Repair und kleineren Schweißarbeiten an Karosserieteilen.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -396,6 +413,89 @@
         <p>Kontaktieren Sie uns — wir beraten Sie persönlich und kostenlos.</p>
         <a href="kontakt.html" class="btn">Jetzt anfragen</a>
     </section>
+
+    <!-- Interactive Price Modals -->
+    <div class="ag-modal-overlay" id="modal-reifen">
+        <div class="ag-modal-content dark-auto">
+            <div class="ag-modal-close"><i class="fas fa-times"></i></div>
+            <div class="ag-modal-header">
+                <h3>Reifenwechsel (Ab-Preise)</h3>
+            </div>
+            <div class="ag-modal-body">
+                <span class="ag-modal-price">ab 90 €</span>
+                <p>Preis gilt typischerweise für ein durchschnittliches Fahrzeug für den Komplettwechsel von 4 Reifen:</p>
+                <ul>
+                    <li>4 Räder demontieren</li>
+                    <li>Alte Reifen abziehen, neue aufziehen</li>
+                    <li>Räder auswuchten (bis 17 Zoll)</li>
+                    <li>Räder anmontieren</li>
+                </ul>
+                <p><strong>Zusätzliche Optionen:</strong></p>
+                <ul>
+                    <li>Nur Räder umstecken (mitgebrachte Kompletträder): ab 7 € pro Rad</li>
+                    <li>Nur Auswuchten (bis 17 Zoll): ab 11 € pro Rad</li>
+                    <li>Nur Auswuchten (ab 18 Zoll): ab 15 € pro Rad</li>
+                </ul>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:20px;">
+                    <em>Hinweis: Der finale Preis richtet sich nach Reifengröße und Fahrzeug. Bitte senden Sie uns eine Anfrage mit Ihrer KBA-/VIN-Nummer oder einem Fahrzeugfoto für ein exaktes Angebot.</em>
+                </p>
+            </div>
+            <div class="ag-modal-action">
+                <a href="kontakt.html" class="btn btn-primary-auto">Exakten Preis anfragen</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ag-modal-overlay" id="modal-klima">
+        <div class="ag-modal-content dark-auto">
+            <div class="ag-modal-close"><i class="fas fa-times"></i></div>
+            <div class="ag-modal-header">
+                <h3>Klimaservice (Kältemittel)</h3>
+            </div>
+            <div class="ag-modal-body">
+                <span class="ag-modal-price">ab 22 € / 100g</span>
+                <p>Wir berechnen fair nach tatsächlichem Verbrauch des Kältemittels und nach Fahrzeugtyp (R134a oder R1234yf).</p>
+                <p><strong>Beispiele (Richtwerte):</strong></p>
+                <ul>
+                    <li>Kleinstwagen / Kompaktklasse: oft weniger Kältemittel benötigt</li>
+                    <li>Große SUVs / Limousinen: höheres Füllvolumen erforderlich</li>
+                    <li>Das System wird vorab auf Dichtigkeit geprüft.</li>
+                </ul>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:20px;">
+                    <em>Hinweis: Die exakte Füllmenge und Preis können erst anhand Ihrer Fahrzeugdaten ermittelt werden. Bitte kontaktieren Sie uns mit KBA, VIN oder Ihrem Fahrzeugschein für eine präzise Kalkulation.</em>
+                </p>
+            </div>
+            <div class="ag-modal-action">
+                <a href="kontakt.html" class="btn btn-primary-auto">Exakten Preis anfragen</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ag-modal-overlay" id="modal-service">
+        <div class="ag-modal-content dark-auto">
+            <div class="ag-modal-close"><i class="fas fa-times"></i></div>
+            <div class="ag-modal-header">
+                <h3>Kleiner Kundendienst</h3>
+            </div>
+            <div class="ag-modal-body">
+                <span class="ag-modal-price">ab 185 €</span>
+                <p>Dieses Paket (Öl- & Filterwechsel) ist für viele durchschnittliche Pkw kalkuliert. <br>Der angegebene Preis versteht sich inklusive:</p>
+                <ul>
+                    <li>Hochwertiges Marken-Motoröl</li>
+                    <li>Neuer Ölfilter</li>
+                    <li>Arbeitszeit & gesetzliche MwSt.</li>
+                </ul>
+                <p><strong>Zusätzliche Prüfungen auf Wunsch:</strong><br>
+                Sprechen Sie uns gern an, falls bei Ihrem Fahrzeug Reifendrucksensoren (RDKS) verbaut sind oder Sie weitere Filter (Innenraum, Luft) wechseln möchten.</p>
+                <p style="font-size:0.85rem; color:#64748b; margin-top:20px;">
+                    <em>Hinweis: Für ein bindendes Angebot passend zu Ihrem speziellen Motor, senden Sie uns bitte Fahrzeugschein, KBA oder VIN über unser Formular.</em>
+                </p>
+            </div>
+            <div class="ag-modal-action">
+                <a href="kontakt.html" class="btn btn-primary-auto">Exakten Preis anfragen</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer section" style="padding:40px 8%;">
@@ -422,6 +522,7 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/components/smart-header.js"></script>
+    <script src="../js/components/modal.js"></script>
     <script>
         AOS.init({ duration: 650, easing: 'ease-out-cubic', once: true, offset: 80, startEvent: 'DOMContentLoaded' });
     </script>

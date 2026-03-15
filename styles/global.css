@@ -1215,3 +1215,178 @@ img {
     align-items: center;
   }
 }
+
+/* ==========================================================================
+   Modals (Interactive Modals) - Global
+   ========================================================================== */
+.ag-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.ag-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+/* ── Default (Light, Bau) ── */
+.ag-modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 560px;
+  border-radius: 16px;
+  padding: 44px 36px;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+  transform: translateY(40px) scale(0.92);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+}
+
+.ag-modal-overlay.active .ag-modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Closing animation — triggered by JS adding .closing class */
+.ag-modal-overlay.closing .ag-modal-content {
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+}
+
+/* ── Dark variant (Auto section) ── */
+.ag-modal-content.dark-auto {
+  background: #111827;
+  border: 1px solid rgba(59, 125, 216, 0.25);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(79, 172, 247, 0.08);
+}
+
+.ag-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(100, 116, 139, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.ag-modal-content.dark-auto .ag-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.ag-modal-content.dark-auto .ag-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+}
+
+.ag-modal-close:hover {
+  background: #e2e8f0;
+  color: #0e1117;
+}
+
+.ag-modal-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+
+.ag-modal-content.dark-auto .ag-modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.ag-modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0e1117;
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.ag-modal-content.dark-auto .ag-modal-header h3 {
+  color: #f1f5f9;
+  text-shadow: 0 0 30px rgba(79, 172, 247, 0.3);
+}
+
+.ag-modal-body {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.ag-modal-content.dark-auto .ag-modal-body {
+  color: #94a3b8;
+}
+
+.ag-modal-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--clr-auto-accent);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.ag-modal-body p {
+  margin-bottom: 16px;
+}
+
+.ag-modal-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.ag-modal-body ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+}
+
+.ag-modal-body ul li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--clr-auto-accent);
+  font-weight: 700;
+}
+
+.ag-modal-content.dark-auto .ag-modal-body ul li::before {
+  color: var(--clr-ice-blue);
+}
+
+.ag-modal-action {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Make service cards interactive */
+[data-modal] {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+[data-modal]:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  border-color: var(--clr-auto-accent);
+}
